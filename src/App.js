@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
-import Webcam from "react-webcam";
+// import Webcam from "react-webcam";
+import CameraControl from './CameraControl'
+
 
 
 class App extends React.Component {
   render() {
-    const videoConstraints = {
-      facingMode: { exact: "environment" }
-    };
+   
 
-    return <Webcam videoConstraints={videoConstraints} />;
+    return <CameraControl />;
   }
 }
 
