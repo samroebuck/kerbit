@@ -7,9 +7,10 @@ class Model extends React.Component {
   }
 
   async runModel() {
-    const modelurl = 'https://localhost:3000/model/model.json';
+    const modelurl = process.env.PUBLIC_URL + '/model/model.json';
     const model = await automl.loadImageClassification(modelurl);
-    const image = this.props.capturedImage;
+    const image = document.querySelector('.generatedImage')
+    console.log(image)
     const predictions = await model.classify(image);
     // [END load_and_run_model]
     console.log(predictions);

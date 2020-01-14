@@ -7,10 +7,13 @@
     "@tensorflow/tfjs-converter": "^1.5.1",
     "@tensorflow/tfjs-core": "^1.5.1",
     "axios": "^0.19.1",
+    "grommet": "^2.9.0",
+    "grommet-icons": "^4.4.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "react-webcam": "^4.0.0"
+    "react-webcam": "^4.0.0",
+    "styled-components": "^5.0.0"
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",

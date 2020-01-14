@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class CameraControl extends Component {
 
+
   componentDidMount() {
     const { initializeCamera } = this.props;
     initializeCamera()
@@ -9,7 +10,7 @@ class CameraControl extends Component {
   render() {
     const { captureImage, discardImage, capturedImage, captured } = this.props;
     const imageDisplay = capturedImage ? (
-      <img src={capturedImage} alt="captured" width="350" />
+      <img src={capturedImage} alt="captured" width="350" className='generatedImage'/>
     ) : (
       <span />
     );
