@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 
 class CameraControl extends Component {
-
-
   componentDidMount() {
     const { initializeCamera } = this.props;
     initializeCamera()
@@ -10,28 +8,9 @@ class CameraControl extends Component {
   render() {
     const { captureImage, discardImage, capturedImage, captured } = this.props;
     const imageDisplay = capturedImage ? (
-      <img src={capturedImage} alt="captured" width="350" className='generatedImage'/>
+      <img src={capturedImage} alt="captured" width="100%" className='generatedImage'/>
     ) : (
-      <span />
-    );
-
-    const buttons = captured ? (
-      <div>
-        <button className="deleteButton" onClick={discardImage}>
-          {" "}
-          Delete Photo{" "}
-        </button>
-      </div>
-    ) : (
-      <button className="captureButton" onClick={captureImage}>
-        {" "}
-        Take Picture{" "}
-      </button>
-    );
-
-    return (
-      <div>
-        <video
+      <video
           autoPlay
           playsInline
           muted
@@ -39,7 +18,25 @@ class CameraControl extends Component {
           width="100%"
           height="200"
         />
-        <br />
+    );
+
+    const buttons = captured ? (
+      <div className='buttonParent'>
+        <button className="deleteButton" onClick={discardImage}>
+          {" "}
+          Delete Photo{" "}
+        </button>
+      </div>
+    ) : (
+      <div className='buttonParent'>
+      <button className="captureButton" onClick={captureImage}>
+        
+      </button>
+      </div>
+    );
+
+    return (
+      <div>
         <div className="imageCanvas">{imageDisplay}</div>
         {buttons}
       </div>

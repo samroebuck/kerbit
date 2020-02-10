@@ -1,10 +1,12 @@
+import { Grommet } from 'grommet';
 import React from "react";
-import CameraControl from "./CameraControl";
-import { Webcam } from "./Webcam.js";
-import Model from './Model.js'
-import {Grommet} from 'grommet'
-import AppBar from './AppBar.js';
-import KerbitLogo from './images/applogo.svg'
+import AppBar from './components/AppBar.js';
+import CameraControl from "./components/CameraControl";
+import KerbitLogo from './images/applogo.svg';
+import Model from './components/Model.js';
+import { Webcam } from "./components/Webcam.js";
+
+import './styles/styles.scss'
 
 
 const theme = {
@@ -72,6 +74,7 @@ class App extends React.Component {
         discardImage={this.discardImage}
         capturedImage={this.state.capturedImage}
         initializeCamera={this.initializeCamera}
+        captured={this.state.captured}
       />
       <Model {...this.state}/>
       </Grommet>
