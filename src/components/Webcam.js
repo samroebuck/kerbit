@@ -17,7 +17,7 @@ export class Webcam {
       return new Promise((resolve, reject) => {
         if (navigator.mediaDevices.getUserMedia !== undefined) {
           navigator.mediaDevices
-            .getUserMedia({ audio: false, video: { facingMode: "user" } })
+            .getUserMedia({ audio: false, video: { facingMode: "environment" } })
             .then(mediaStream => {
               if ("srcObject" in this.webcamElement) {
                 this.webcamElement.srcObject = mediaStream;
