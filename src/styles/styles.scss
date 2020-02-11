@@ -36,23 +36,29 @@ $purple: #7f7281;
 
 // global styles
 
-.imageCanvas {
-    height: calc(100vh - 52px);
+.logo {
+    width: 40vw;
+    padding: 10px;
+}
+
+.imageCanvas img {
+    height: calc(100vh - 40px);
     width: 100vw;
     object-fit: cover;
     background-color: rgba($color: $purple, $alpha: 0.2);
 }
 
 video {
-    height: calc(100vh - 52px);
+    height: calc(100vh - 40px);
     width: 100vw;
     object-fit: cover;
 }
 
-.buttonParent {
+.controls {
     background-color: $lightGreen;
     border-radius: 60px 0px 60px 60px;
-    width: 95vw;
+    width: calc(93vw - 10px);
+    padding: 10px;
     height: 82px;
     position: absolute;
     top: 93%;
@@ -61,8 +67,21 @@ video {
     align-items: center;
     display: flex;
     justify-content: center;
+    box-shadow: -1px -3px 7px rgba(0, 0, 0, 0.2);
 
-    button {
+    &.controls--expanded {
+        height: 365px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -3%);
+        padding: 10px;
+        flex-direction: column;
+        justify-content: unset;
+    } 
+
+
+
+    &__capturebtn {
         @extend .reset-Button;
         background-color: $white;
         border-radius: 100%;
@@ -71,3 +90,4 @@ video {
         box-shadow: 0px 2px 5px #000000;
     }
 }
+
