@@ -1,10 +1,14 @@
 import { Grommet } from 'grommet';
 import React from "react";
 import AppBar from './components/AppBar.js';
-import CameraControl from "./components/CameraControl";
+import Camera from "./components/Camera";
 import KerbitLogo from './images/applogo.svg';
-import Model from './components/Model.js';
+// import Model from './components/Model.js';
+import ControlBar from './components/ControlBar'
 import { Webcam } from "./components/Webcam.js";
+
+import * as automl from "@tensorflow/tfjs-automl";
+
 
 import './styles/styles.scss'
 
@@ -12,7 +16,7 @@ import './styles/styles.scss'
 const theme = {
   global: {
     colors: {
-      brand: '#7BB8B3'
+      brand: '#68BAB4'
     },
     font: {
       family: 'Roboto Slab',
@@ -28,9 +32,12 @@ class App extends React.Component {
     this.webcam = null;
     this.state = {
       capturedImage: null,
-      captured: false
+      captured: false,
+      prediction: ''
     };
   }
+
+  
 
   initializeCamera = () => {
     // initialize the camera
@@ -46,6 +53,19 @@ class App extends React.Component {
     });
   }
 
+  runModel = async () => {
+    const modelurl = process.env.PUBLIC_URL + "/model/model.json";
+    const model = await automl.loadImageClassification(modelurl);
+    const image = document.querySelector(".generatedImage");
+    let predictions = await model.classify(image);
+    predictions.sort((a,b) => (a.prob > b.prob) ? -1 : ((b.prob > a.prob) ? 1 : 0));
+    let mostLikely = predictions[0].label;
+
+    this.setState({
+      prediction: mostLikely
+    });
+  } 
+
   captureImage = async () => {
     const capturedData = this.webcam.takeBase64Photo({
       type: "jpeg",
@@ -56,27 +76,32 @@ class App extends React.Component {
       captured: true,
       capturedImage: capturedData.base64
     });
+    this.runModel();
   };
 
-  discardImage = () => {
-    this.setState({
-      captured: false,
-      capturedImage: null
-    });
-  };
+
+  // discardImage = () => {
+  //   this.setState({
+  //     captured: false,
+  //     capturedImage: null
+  //   });
+  // };
 
   render() {
     return (
       <Grommet theme={theme} full>
-      <AppBar ><img src={KerbitLogo} alt='kerbit logo' /></AppBar>
-      <CameraControl
-        captureImage={this.captureImage}
-        discardImage={this.discardImage}
+      <AppBar ><img src={KerbitLogo} alt='kerbit logo' className='logo'/></AppBar>
+      <Camera
+        // discardImage={this.discardImage}
         capturedImage={this.state.capturedImage}
         initializeCamera={this.initializeCamera}
         captured={this.state.captured}
       />
-      <Model {...this.state}/>
+      <ControlBar captureImage={this.captureImage} prediction={this.state.prediction}
+>
+      </ControlBar>
+      {/* <Model {...this.state}/> */}
+
       </Grommet>
     );
   }
