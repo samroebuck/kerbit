@@ -43,7 +43,7 @@ class App extends React.Component {
     // initialize the camera
     this.canvasElement = document.createElement("canvas");
     this.webcam = new Webcam(
-      document.getElementById("webcam"),
+      document.querySelector(".cameracontainer__cameravideo"),
       this.canvasElement
     );
     this.webcam.setup().catch(() => {
@@ -56,10 +56,10 @@ class App extends React.Component {
   runModel = async () => {
     const modelurl = process.env.PUBLIC_URL + "/model/model.json";
     const model = await automl.loadImageClassification(modelurl);
-    const image = document.querySelector(".generatedImage");
+    const image = document.querySelector(".cameracontainer__capturedimage");
     let predictions = await model.classify(image);
     predictions.sort((a,b) => (a.prob > b.prob) ? -1 : ((b.prob > a.prob) ? 1 : 0));
-    let mostLikely = predictions[0].label;
+    let mostLikely = predictions[0].label.toUpperCase();
 
     this.setState({
       prediction: mostLikely

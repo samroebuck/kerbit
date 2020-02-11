@@ -4,39 +4,36 @@ import CameraButton from "../images/camerabutton.svg";
 class ControlBar extends React.Component {
   state = { prediction: "" };
 
-//   static getDerivedStateFromProps(nextProps) {
-//     return {
-//       prediction: nextProps.prediction
-//     };
-//   }
   componentDidUpdate() {
-      if (this.props.prediction) {
-          console.log('has prediction')
-      }
+    if (this.props.prediction) {
+      console.log("has prediction");
+    }
   }
-
 
   render() {
     const { captureImage } = this.props;
     const prediction = this.props.prediction;
     const control = prediction ? (
-        <div className="controls controls--expanded">
+      <div className="controls controls--expanded">
         <button className="controls__capturebtn" onClick={captureImage}>
           <img src={CameraButton} alt="camera shutter button" />
         </button>
         <br></br>
-        <h2>{this.props.prediction}</h2>
+        <div className="response">
+          <header className="response__prediction">
+            <h2>IT'S... {this.props.prediction}</h2>
+          </header>
+        </div>
       </div>
-        ) : (
-            <div className="controls">
-            <button className="controls__capturebtn" onClick={captureImage}>
-              <img src={CameraButton} alt="camera shutter button" />
-            </button>
-          </div>
-        );
+    ) : (
+      <div className="controls">
+        <button className="controls__capturebtn" onClick={captureImage}>
+          <img src={CameraButton} alt="camera shutter button" />
+        </button>
+      </div>
+    );
 
-
-    return <> { control } </>;
+    return <> {control} </>;
   }
 }
 
