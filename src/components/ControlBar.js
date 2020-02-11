@@ -34,13 +34,6 @@ class ControlBar extends React.Component {
             </button>
           </div>
         );
-    // let control = (
-    //   <div className="controls">
-    //     <button className="controls__capturebtn" onClick={captureImage}>
-    //       <img src={CameraButton} alt="camera shutter button" />
-    //     </button>
-    //   </div>
-    // );
 
 
     return <> { control } </>;
