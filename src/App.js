@@ -58,14 +58,8 @@ class App extends React.Component {
     predictions.sort((a, b) =>
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
-console.log(predictions)
-    let mostLikely;
-    if (predictions[0].prop > 0.2) {
-    mostLikely = predictions[0].label.toUpperCase();
-    } else {
-      mostLikely = 'unknown'
-    }
 
+    let mostLikely = predictions[0].label.toUpperCase();
     this.setState({
       prediction: mostLikely
     });
