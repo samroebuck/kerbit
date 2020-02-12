@@ -7,14 +7,14 @@ class Camera extends Component {
   }
   render() {
     const { capturedImage } = this.props;
-    const imageDisplay = capturedImage ? (
+    const imageDisplay = capturedImage ? ( <>
+      <video autoPlay playsInline muted id="webcam" className='cameracontainer__cameravideo cameracontainer__cameravideo--noheight'/>
       <img
         className='cameracontainer__capturedimage'
         src={capturedImage}
         alt="captured"
-        width="100%"
       />
-      
+      </>
     ) : (
       <video autoPlay playsInline muted id="webcam" width="100%" height="200" className='cameracontainer__cameravideo'/>
     );

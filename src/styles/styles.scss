@@ -20,12 +20,17 @@
     width: 100vw;
     object-fit: cover;
     opacity: 0.7;
+    margin-top: -20px;
   }
 
   &__cameravideo {
     height: calc(100vh - 40px);
     width: 100vw;
     object-fit: cover;
+
+    &--noheight {
+      height: 0px;
+    }
   }
 }
 

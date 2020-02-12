@@ -11,7 +11,7 @@ class ControlBar extends React.Component {
   }
 
   render() {
-    const { captureImage } = this.props;
+    const { captureImage, discardImage } = this.props;
     const prediction = this.props.prediction;
     const control = prediction ? (
       <div className="controls controls--expanded">
@@ -24,6 +24,7 @@ class ControlBar extends React.Component {
             <h2>IT'S... {this.props.prediction}</h2>
           </header>
         </div>
+        <button className='controls__restart' onClick={discardImage}>Restart</button>
       </div>
     ) : (
       <div className="controls">
