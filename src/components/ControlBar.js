@@ -9,7 +9,6 @@ class ControlBar extends React.Component {
       console.log("has prediction");
     }
   }
-
   render() {
     const { captureImage, discardImage } = this.props;
     const prediction = this.props.prediction;

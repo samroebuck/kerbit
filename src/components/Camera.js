@@ -20,10 +20,7 @@ class Camera extends Component {
     );
 
     return (
-      <div>
-        <div className="cameracontainer">{imageDisplay}</div>
-        {/* {buttons} */}
-      </div>
+        <main className="cameracontainer">{imageDisplay}</main>
     );
   }
 }

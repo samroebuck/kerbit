@@ -6,6 +6,7 @@ import KerbitLogo from "./images/applogo.svg";
 // import Model from './components/Model.js';
 import ControlBar from "./components/ControlBar";
 import { Webcam } from "./components/Webcam.js";
+import LoadingSpinner from './components/LoadingSpinner'
 
 import * as automl from "@tensorflow/tfjs-automl";
 
@@ -57,7 +58,13 @@ class App extends React.Component {
     predictions.sort((a, b) =>
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
-    let mostLikely = predictions[0].label.toUpperCase();
+console.log(predictions)
+    let mostLikely;
+    if (predictions[0].prop > 0.2) {
+    mostLikely = predictions[0].label.toUpperCase();
+    } else {
+      mostLikely = 'unknown'
+    }
 
     this.setState({
       prediction: mostLikely
@@ -69,24 +76,25 @@ class App extends React.Component {
       type: "jpeg",
       quality: 0.8
     });
-    // console.log(capturedData);
+    
     this.setState({
       captured: true,
-      capturedImage: capturedData.base64
+      capturedImage: capturedData.base64,
     });
     this.runModel();
   };
 
   discardImage = () => {
-
     this.setState({
       captured: false,
       capturedImage: null,
       prediction: ""
     });
   };
+  
 
   render() {
+    const { captured, prediction } = this.state;
     return (
       <Grommet theme={theme} full>
         <AppBar>
@@ -97,6 +105,8 @@ class App extends React.Component {
           initializeCamera={this.initializeCamera}
           captured={this.state.captured}
         />
+        {/* <LoadingSpinner />  */}
+        {captured && !prediction ? <LoadingSpinner /> : <></>}
         <ControlBar
           captureImage={this.captureImage}
           prediction={this.state.prediction}

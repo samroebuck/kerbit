@@ -88,3 +88,105 @@
 }
 
 // controlbar
+
+
+
+// variables
+
+$primaryColour: #df948c;
+$dashOffsetStart: 800;
+$dashOffsetEnd: 0;
+
+// animation mixins
+
+@mixin keyframes($animationName) {
+ @-webkit-keyframes #{$animationName} {
+  @content;
+ }
+ @keyframes #{$animationName} {
+  @content;
+ }
+}
+
+@mixin animation(
+ $name,
+ $delay,
+ $duration,
+ $iteration,
+ $ease,
+ $fillmode: forwards
+) {
+ -webkit-animation: $name $duration $ease $delay $fillmode $iteration;
+ animation: $name $duration $ease $delay $fillmode $iteration;
+}
+
+// animation mixins
+
+@include keyframes(loading) {
+ 0% {
+  transform: scale(1) rotateZ(0);
+ }
+ 50% {
+  transform: scale(1) rotateZ(180deg);
+ }
+ 100% {
+  transform: scale(1) rotateZ(360deg);
+ }
+}
+
+@include keyframes(stroke-draw) {
+ from {
+  stroke-dashoffset: $dashOffsetStart;
+  fill-opacity: 0;
+ }
+ 65% {
+  fill-opacity: 1;
+ }
+
+ to {
+  stroke-dashoffset: $dashOffsetEnd;
+  fill-opacity: 1;
+ }
+}
+
+svg {
+  position: absolute;
+  top: 40%;
+  height: 20vh;
+  width:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+ @include animation(
+  loading,
+  2.3s,
+  3s,
+  infinite,
+  cubic-bezier(0.785, 0.135, 0.15, 0.86)
+ );
+}
+
+path {
+ stroke:$primaryColour;
+ fill: $primaryColour;
+ fill-opacity: 0;
+ stroke-width: 0.5;
+ stroke-dasharray: $dashOffsetStart;
+ stroke-dashoffset: $dashOffsetStart;
+	 @include animation(
+  stroke-draw,
+  0s,
+  3s,
+  infinite,
+  ease-in-out
+ );
+}
+
+#arrow-bottom path {
+ animation-delay: 0.5s;
+}
+
+#arrow-side path {
+ animation-delay: 1s;
+}
