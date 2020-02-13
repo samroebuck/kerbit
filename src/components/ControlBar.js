@@ -1,5 +1,6 @@
 import React from "react";
 import CameraButton from "../images/camerabutton.svg";
+import RestartIcon from '../images/restart-icon.svg'
 
 class ControlBar extends React.Component {
   state = { prediction: "" };
@@ -23,7 +24,10 @@ class ControlBar extends React.Component {
             <h2>IT'S... {this.props.prediction}</h2>
           </header>
         </div>
-        <button className='controls__restart' onClick={discardImage}>Restart</button>
+        <button className='controls__restart' onClick={discardImage}>
+
+          <img src={RestartIcon} alt='restart button' />
+        </button>
       </div>
     ) : (
       <div className="controls">
