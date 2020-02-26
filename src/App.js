@@ -2,11 +2,12 @@ import { Grommet } from "grommet";
 import React from "react";
 import AppBar from "./components/AppBar.js";
 import Camera from "./components/Camera";
-import KerbitLogo from "./images/applogo.svg";
+import KerbitLogo from "./images/logo-refined-spacing.svg";
 // import Model from './components/Model.js';
 import ControlBar from "./components/ControlBar";
 import { Webcam } from "./components/Webcam.js";
 import LoadingSpinner from './components/LoadingSpinner'
+
 
 import * as automl from "@tensorflow/tfjs-automl";
 
