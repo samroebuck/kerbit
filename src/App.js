@@ -15,7 +15,7 @@ import "./styles/styles.scss";
 const theme = {
   global: {
     colors: {
-      brand: "pink"
+      brand: "#68BAB4"
     },
     font: {
       family: "Roboto Slab",
