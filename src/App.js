@@ -62,9 +62,9 @@ class App extends React.Component {
 
     let mostLikely = predictions[0].label.toUpperCase();
 
-    if (predictions[0].prob < 0.5) {
-      mostLikely = 'UNKNOWN'
-    }
+    // if (predictions[0].prob < 0.5) {
+    //   mostLikely = 'UNKNOWN'
+    // }
 
 
     this.setState({
