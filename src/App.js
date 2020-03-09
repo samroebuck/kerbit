@@ -56,15 +56,21 @@ class App extends React.Component {
     const model = await automl.loadImageClassification(modelurl);
     const image = document.querySelector(".cameracontainer__capturedimage");
     let predictions = await model.classify(image);
+
+    console.log(predictions)
     predictions.sort((a, b) =>
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
 
     let mostLikely = predictions[0].label.toUpperCase();
 
-    // if (predictions[0].prob < 0.5) {
-    //   mostLikely = 'UNKNOWN'
-    // }
+    if (mostLikely === 'CHAIR' || mostLikely === 'SWIVLECHAIR' || mostLikely === 'SOFA' || mostLikely === 'TABLE' || mostLikely === 'BED') {
+      mostLikely = 'FURNITURE'
+    }
+
+    if (predictions[0].prob < 0.4) {
+      mostLikely = 'UNKNOWN'
+    }
 
 
     this.setState({

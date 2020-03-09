@@ -1,10 +1,8 @@
 batteries
 kitchenwares
 trash
-shreaded-paper
 metal
 plastic-bag
-books
 glass
 chair
 cardboard
