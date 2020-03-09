@@ -1,8 +1,7 @@
 {
   "short_name": "Kerbit",
   "name": "Kerbit - The smart recycling app",
-  "icons": [
-    {
+  "icons": [{
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
@@ -44,7 +43,7 @@
     }
   ],
   "start_url": ".",
-  "display": "browser",
-  "theme_color": "#000000",
+  "display": "standalone",
+  "theme_color": "#68BAB4",
   "background_color": "#ffffff"
 }
