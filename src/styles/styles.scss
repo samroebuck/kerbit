@@ -1,12 +1,34 @@
-@import "./base/_reset.scss";
-@import "./base/_typography.scss";
-@import "./base/_colours.scss";
+@import './base/_reset.scss';
+@import './base/_typography.scss';
+@import './base/_colours.scss';
+
+// root styling
+
+main {
+  position: relative;
+  height: 100vh;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
 
 // header
 
-.logo {
-  width: 40vw;
-  padding: 10px;
+.appbar {
+  background-color: $darkGreen;
+  height: 7.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+
+  &__logo {
+    width: 40vw;
+    padding: 10px;
+  }
 }
 
 // header
@@ -14,17 +36,18 @@
 // camera
 
 .cameracontainer {
-    background-color: darken($color: $grey, $amount: 20%);
+  background-color: darken($color: $grey, $amount: 20%);
+  height: 100vh;
   &__capturedimage {
-    height: calc(100vh - 40px);
+    height: 100vh;
     width: 100vw;
     object-fit: cover;
     opacity: 0.7;
-    margin-top: -20px;
+    // margin-top: -20px;
   }
 
   &__cameravideo {
-    height: calc(100vh - 40px);
+    height: 100vh;
     width: 100vw;
     object-fit: cover;
 
@@ -42,26 +65,37 @@
   background-color: $lightGreen;
   border-radius: 60px 0px 60px 60px;
   width: calc(93vw - 60px);
-  padding: 10px 30px;
+  padding: 10px 30px 10px 30px;
   height: 60px;
+  width: calc(100vw - 80px);
   position: absolute;
-  top: 94%;
+  bottom: 10px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  // justify-content: center;
   box-shadow: -1px -3px 7px rgba(0, 0, 0, 0.2);
 
   &.controls--expanded {
-    height: 250px;
-    // bottom: 50%;
-    top: calc(94% - 100px);
+    border-radius: 50px 0px 5px 5px;
+    height: auto;
+    bottom: 10px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 30px;
-    flex-direction: column;
-    justify-content: unset;
-    transition: all 300ms cubic-bezier(0, 0, 0.7, 1.61);
+    transform: translate(-50%, 0%);
+    padding: 10px 10px 10px 10px;
+    width: calc(100vw - 50px);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    transition: height 300ms cubic-bezier(0, 0, 0.7, 1.61);
+
+    .controls__helpbtn {
+      margin-left: 20px;
+    }
+
+    .controls__flashbtn {
+      margin-right: 20px;
+    }
   }
 
   &__capturebtn {
@@ -72,134 +106,262 @@
     width: 56px;
     box-shadow: 0px 2px 5px #000000;
     align-self: center;
+
+    &--disabled {
+      opacity: 0.6;
+    }
   }
 
-  &__restart {
+  &__helpbtn {
     @extend .reset-Button;
-    background-color: $white;
-    border-radius: 10px;
-    padding: 15px;
-    // width: 50%;
-    color: $pink;
-    align-self: flex-start;
-    box-shadow: 0px 2px 5px $grey;
+  }
+
+  &__flashbtn {
+    @extend .reset-Button;
   }
 }
 
 .response {
-  margin-bottom: 10px;;
+  margin: 10px 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
   &__prediction {
+    grid-area: 1 / 1 / 2 / 6;
     background-color: $white;
     text-align: center;
     padding: 15px;
     border-radius: 10px;
-
+    box-shadow: 0px 2px 5px $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     h2 {
       @include font-brandon-grotesque(em(24), $grey, 500);
+    }
+  }
+
+  &__btn {
+    @extend .reset-Button;
+    background-color: $white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px $grey;
+
+    &--bottomfirst {
+      grid-area: 4 / 2 / 5 / 1;
+    }
+
+    &--bottomsecond {
+      grid-area: 4 / 2 / 5 / 3;
+    }
+
+    &--bottomthird {
+      grid-area: 4 / 3 / 5 / 6;
+      background-color: $pink;
+      color: $white;
+      @include font-roboto-slab(em(16), $white, 500);
+
+      img {
+        width: 80px;
+        vertical-align: unset;
+      }
     }
   }
 }
 
 // controlbar
 
+// form
 
+.form {
+  position: absolute;
+  bottom: 10px;
+  height: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 20px);
+  // display: flex;
+  // flex-direction: column;
+  background-color: $white;
+  // justify-content: space-between;
+  z-index: 1;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px $grey;
 
+  form {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 40px) auto repeat(3, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 20px;
+    padding: 0px 20px 20px 20px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    background-color: $white;
+    box-shadow: 0px 1px 5px $grey;
+    border: unset;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid $pink;
+
+    &:focus {
+      border: 2px solid $purple;
+    }
+  }
+
+  label {
+    @include font-brandon-grotesque(em(20), $darkGrey, 500);
+    align-self: center;
+  }
+
+  &__title {
+    background-color: $darkGreen;
+    @include font-roboto-slab(em(24), $white, 500);
+    text-align: center;
+    padding: 20px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-self: center;
+    margin-bottom: 20px;
+    line-height: 1.2;
+
+    img {
+      height: 15px;
+      margin: 0px 5px;
+      vertical-align: unset;
+    }
+  }
+
+  &__wronglabel {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  &__wronginput {
+    grid-area: 1 / 3 / 2 / 6;
+  }
+
+  &__rightlabel {
+    grid-area: 2 / 1 / 3 / 3;
+  }
+
+  &__rightinput {
+    grid-area: 2 / 3 / 3 / 6;
+  }
+
+  &__extralabel {
+    grid-area: 3 / 1 / 4 / 6;
+  }
+
+  &__extrainfo {
+    grid-area: 4 / 1 / 6 / 6;
+  }
+
+  &__btn {
+    @extend .reset-Button;
+    background-color: $purple;
+    border-radius: 10px;
+    padding: 10px;
+    grid-area: 6 / 2 / 7 / 5;
+    @include font-roboto-slab(em(20), $pureWhite, 500);
+  }
+}
+
+// animation
 // variables
-
-$primaryColour: #df948c;
 $dashOffsetStart: 800;
 $dashOffsetEnd: 0;
 
 // animation mixins
 
 @mixin keyframes($animationName) {
- @-webkit-keyframes #{$animationName} {
-  @content;
- }
- @keyframes #{$animationName} {
-  @content;
- }
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
 }
 
 @mixin animation(
- $name,
- $delay,
- $duration,
- $iteration,
- $ease,
- $fillmode: forwards
+  $name,
+  $delay,
+  $duration,
+  $iteration,
+  $ease,
+  $fillmode: forwards
 ) {
- -webkit-animation: $name $duration $ease $delay $fillmode $iteration;
- animation: $name $duration $ease $delay $fillmode $iteration;
+  -webkit-animation: $name $duration $ease $delay $fillmode $iteration;
+  animation: $name $duration $ease $delay $fillmode $iteration;
 }
 
 // animation mixins
 
 @include keyframes(loading) {
- 0% {
-  transform: scale(1) rotateZ(0);
- }
- 50% {
-  transform: scale(1) rotateZ(180deg);
- }
- 100% {
-  transform: scale(1) rotateZ(360deg);
- }
+  0% {
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    transform: scale(1) rotateZ(180deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(360deg);
+  }
 }
 
 @include keyframes(stroke-draw) {
- from {
-  stroke-dashoffset: $dashOffsetStart;
-  fill-opacity: 0;
- }
- 65% {
-  fill-opacity: 1;
- }
+  from {
+    stroke-dashoffset: $dashOffsetStart;
+    fill-opacity: 0;
+  }
+  65% {
+    fill-opacity: 1;
+  }
 
- to {
-  stroke-dashoffset: $dashOffsetEnd;
-  fill-opacity: 1;
- }
+  to {
+    stroke-dashoffset: $dashOffsetEnd;
+    fill-opacity: 1;
+  }
 }
 
 svg {
   position: absolute;
   top: 40%;
   height: 20vh;
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
 
- @include animation(
-  loading,
-  2.3s,
-  3s,
-  infinite,
-  cubic-bezier(0.785, 0.135, 0.15, 0.86)
- );
+  @include animation(
+    loading,
+    2.3s,
+    3s,
+    infinite,
+    cubic-bezier(0.785, 0.135, 0.15, 0.86)
+  );
 }
 
 path {
- stroke:$primaryColour;
- fill: $primaryColour;
- fill-opacity: 0;
- stroke-width: 0.5;
- stroke-dasharray: $dashOffsetStart;
- stroke-dashoffset: $dashOffsetStart;
-	 @include animation(
-  stroke-draw,
-  0s,
-  3s,
-  infinite,
-  ease-in-out
- );
+  stroke: $pink;
+  fill: $pink;
+  fill-opacity: 0;
+  stroke-width: 0.5;
+  stroke-dasharray: $dashOffsetStart;
+  stroke-dashoffset: $dashOffsetStart;
+  @include animation(stroke-draw, 0s, 3s, infinite, ease-in-out);
 }
 
 #arrow-bottom path {
- animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 #arrow-side path {
- animation-delay: 1s;
+  animation-delay: 1s;
 }

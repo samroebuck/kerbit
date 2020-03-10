@@ -1,30 +1,16 @@
-import { Grommet } from "grommet";
-import React from "react";
-import AppBar from "./components/AppBar.js";
-import Camera from "./components/Camera";
-import KerbitLogo from "./images/logo-refined-spacing.svg";
+import React from 'react';
+import AppBar from './components/AppBar.js';
+import Camera from './components/Camera';
+// import KerbitLogo from "./images/logo-refined-spacing.svg";
 // import Model from './components/Model.js';
-import ControlBar from "./components/ControlBar";
-import { Webcam } from "./components/Webcam.js";
-import LoadingSpinner from './components/LoadingSpinner'
+import ControlBar from './components/ControlBar';
+import { Webcam } from './components/Webcam.js';
+import LoadingSpinner from './components/LoadingSpinner';
+import FixForm from './components/FixForm'
 
+import * as automl from '@tensorflow/tfjs-automl';
 
-import * as automl from "@tensorflow/tfjs-automl";
-
-import "./styles/styles.scss";
-
-const theme = {
-  global: {
-    colors: {
-      brand: "#68BAB4"
-    },
-    font: {
-      family: "Roboto Slab",
-      size: "18px",
-      height: "20px"
-    }
-  }
-};
+import './styles/styles.scss';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,45 +19,51 @@ class App extends React.Component {
     this.state = {
       capturedImage: null,
       captured: false,
-      prediction: ""
+      prediction: '',
+      wrong: false
     };
   }
 
   initializeCamera = () => {
     // initialize the camera
-    this.canvasElement = document.createElement("canvas");
+    this.canvasElement = document.createElement('canvas');
     this.webcam = new Webcam(
-      document.querySelector(".cameracontainer__cameravideo"),
+      document.querySelector('.cameracontainer__cameravideo'),
       this.canvasElement
     );
     this.webcam.setup().catch(() => {
       alert(
-        "Error getting access to your camera, open browser in a standalone window"
+        'Error getting access to your camera, open browser in a standalone window'
       );
     });
   };
 
   runModel = async () => {
-    const modelurl = process.env.PUBLIC_URL + "/model/model.json";
+    const modelurl = process.env.PUBLIC_URL + '/model/model.json';
     const model = await automl.loadImageClassification(modelurl);
-    const image = document.querySelector(".cameracontainer__capturedimage");
+    const image = document.querySelector('.cameracontainer__capturedimage');
     let predictions = await model.classify(image);
 
-    console.log(predictions)
+    console.log(predictions);
     predictions.sort((a, b) =>
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
 
     let mostLikely = predictions[0].label.toUpperCase();
 
-    if (mostLikely === 'CHAIR' || mostLikely === 'SWIVLECHAIR' || mostLikely === 'SOFA' || mostLikely === 'TABLE' || mostLikely === 'BED') {
-      mostLikely = 'FURNITURE'
+    if (
+      mostLikely === 'CHAIR' ||
+      mostLikely === 'SWIVELCHAIR' ||
+      mostLikely === 'SOFA' ||
+      mostLikely === 'TABLE' ||
+      mostLikely === 'BED'
+    ) {
+      mostLikely = 'FURNITURE';
     }
 
-    if (predictions[0].prob < 0.4) {
-      mostLikely = 'UNKNOWN'
-    }
-
+    // if (predictions[0].prob < 0.4) {
+    //   mostLikely = 'UNKNOWN'
+    // }
 
     this.setState({
       prediction: mostLikely
@@ -80,13 +72,13 @@ class App extends React.Component {
 
   captureImage = async () => {
     const capturedData = this.webcam.takeBase64Photo({
-      type: "jpeg",
+      type: 'jpeg',
       quality: 0.8
     });
-    
+
     this.setState({
       captured: true,
-      capturedImage: capturedData.base64,
+      capturedImage: capturedData.base64
     });
     this.runModel();
   };
@@ -95,32 +87,56 @@ class App extends React.Component {
     this.setState({
       captured: false,
       capturedImage: null,
-      prediction: ""
+      prediction: ''
     });
   };
-  
+
+  sharePredication = async () => {
+    let predict = this.state.prediction.toLowerCase();
+    const shareData = {
+      title: `Kerbit`,
+      text: `I just recycled some ${predict}s with Kerbit! You can too!`,
+      url: 'https://kerbit.app/',
+    }
+    
+      try {
+        await navigator.share(shareData)
+        console.log('shared successfully');
+      } catch(err) {
+        console.log('Error');
+
+      }
+ 
+  }
+
+  showForm = () => {
+    this.setState({
+      wrong: true,
+    });
+    this.discardImage();
+  }
 
   render() {
-    const { captured, prediction } = this.state;
+    const { captured, prediction, wrong } = this.state;
     return (
-      <Grommet theme={theme} full>
-        <AppBar>
-          <img src={KerbitLogo} alt='kerbit logo' className='logo' />
-        </AppBar>
+      <>
+        <AppBar></AppBar>
         <Camera
           capturedImage={this.state.capturedImage}
           initializeCamera={this.initializeCamera}
           captured={this.state.captured}
         />
-        {/* <LoadingSpinner />  */}
         {captured && !prediction ? <LoadingSpinner /> : <></>}
+        {wrong ? <FixForm /> : <></>}
         <ControlBar
           captureImage={this.captureImage}
           prediction={this.state.prediction}
           discardImage={this.discardImage}
+          sharePredication={this.sharePredication}
+          showForm={this.showForm}
+          disableOnForm={this.state.wrong}
         ></ControlBar>
-        {/* <Model {...this.state}/> */}
-      </Grommet>
+      </>
     );
   }
 }

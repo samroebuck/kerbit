@@ -1,18 +1,10 @@
 import React from "react";
-import { Box } from "grommet";
+import KerbitLogo from "../images/logo-refined-spacing.svg";
 
-const AppBar = props => (
-  <Box
-    tag="header"
-    direction="row"
-    align="center"
-    justify="center"
-    background="brand"
-    pad={{ left: "medium", right: "small", vertical: "small" }}
-    elevation="medium"
-    style={{ zIndex: "1" }}
-    {...props}
-  />
+const AppBar = () => (
+  <header className='appbar'>
+    <img src={KerbitLogo} alt='kerbit logo' className='appbar__logo' />
+  </header>
 );
 
 export default AppBar

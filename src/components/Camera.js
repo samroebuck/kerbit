@@ -20,7 +20,7 @@ class Camera extends Component {
     );
 
     return (
-        <main className="cameracontainer">{imageDisplay}</main>
+        <section className="cameracontainer">{imageDisplay}</section>
     );
   }
 }
