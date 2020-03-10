@@ -7,13 +7,18 @@ import KerbitLogo from '../images/logo-refined-spacing.svg';
 import HelpButton from '../images/collapse.svg';
 import FlashButton from '../images/flash.svg';
 import MapContainer from '../components/MapContainer';
+import RecyclingCentre from '../images/centre.svg';
+
 
 const ExpandedControl = props => {
   const { discardImage, sharePredication, showForm } = props;
 
   //   const control = props.prediction === 'FURNITURE' ? <MapContainer /> : '';
 
-  const isItRecyclable = (props.prediction !== 'BATTERIES' || props.prediction !== 'TRASH') ? 'HELL YEAH, IT\'S RECYCLABLE' : 'OH NO, IT\'S NOT RECYCLABLE';
+  const isItRecyclable =
+    props.prediction !== 'BATTERIES' || props.prediction !== 'TRASH'
+      ? <p>HELL YEAH, IT'S <br></br> <span>RECYCLABLE</span></p>
+      : <p>OH NO, IT'S <br></br> <span>NOT RECYCLABLE</span></p>;
 
   return (
     <section className='controls controls--expanded'>
@@ -41,10 +46,11 @@ const ExpandedControl = props => {
         </header>
         {/* <>{control}</> */}
         <div className='response__recyclable'>
-            <p>{isItRecyclable}</p>
+          {isItRecyclable}
         </div>
         <div className='response__location'>
-
+            <img src={RecyclingCentre} alt='recycling centre icon' />
+            <p>Recycling centre</p>
         </div>
 
         <MapContainer />

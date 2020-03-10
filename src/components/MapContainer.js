@@ -52,7 +52,7 @@ class MapContainer extends React.Component {
       // Important! Always set the container height explicitly
       <div className='response__map'>
       <p>Your closest centre is</p>
-      <div style={{ height: '90%', width: '100%' }}>
+      <div style={{ height: '250px', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: `${key}` }}
           defaultCenter={this.props.center}
