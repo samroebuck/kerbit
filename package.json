@@ -7,6 +7,7 @@
     "@tensorflow/tfjs-converter": "^1.5.1",
     "@tensorflow/tfjs-core": "^1.5.1",
     "axios": "^0.19.1",
+    "google-map-react": "^1.1.6",
     "grommet": "^2.9.0",
     "grommet-icons": "^4.4.0",
     "node-sass": "^4.13.1",

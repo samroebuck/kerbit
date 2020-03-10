@@ -6,9 +6,13 @@ import ShareButtton from '../images/share.svg';
 import KerbitLogo from '../images/logo-refined-spacing.svg';
 import HelpButton from '../images/collapse.svg';
 import FlashButton from '../images/flash.svg';
+import MapContainer from '../components/MapContainer';
 
 const ExpandedControl = props => {
   const { discardImage, sharePredication, showForm } = props;
+
+//   const control = props.prediction === 'FURNITURE' ? <MapContainer /> : '';
+
   return (
     <section className='controls controls--expanded'>
       <ControlButton
@@ -33,6 +37,8 @@ const ExpandedControl = props => {
         <header className='response__prediction'>
           <h2> IT 'S... {props.prediction}</h2>
         </header>
+        {/* <>{control}</> */}
+<MapContainer />
         <ControlButton
           image={RestartIcon}
           alt='restart icon'

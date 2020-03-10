@@ -1,12 +1,11 @@
 import React from 'react';
 import AppBar from './components/AppBar.js';
 import Camera from './components/Camera';
-// import KerbitLogo from "./images/logo-refined-spacing.svg";
-// import Model from './components/Model.js';
 import ControlBar from './components/ControlBar';
 import { Webcam } from './components/Webcam.js';
 import LoadingSpinner from './components/LoadingSpinner';
 import FixForm from './components/FixForm'
+
 
 import * as automl from '@tensorflow/tfjs-automl';
 
