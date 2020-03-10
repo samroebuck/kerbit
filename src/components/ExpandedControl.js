@@ -11,7 +11,9 @@ import MapContainer from '../components/MapContainer';
 const ExpandedControl = props => {
   const { discardImage, sharePredication, showForm } = props;
 
-//   const control = props.prediction === 'FURNITURE' ? <MapContainer /> : '';
+  //   const control = props.prediction === 'FURNITURE' ? <MapContainer /> : '';
+
+  const isItRecyclable = (props.prediction !== 'BATTERIES' || props.prediction !== 'TRASH') ? 'HELL YEAH, IT\'S RECYCLABLE' : 'OH NO, IT\'S NOT RECYCLABLE';
 
   return (
     <section className='controls controls--expanded'>
@@ -38,7 +40,14 @@ const ExpandedControl = props => {
           <h2> IT 'S... {props.prediction}</h2>
         </header>
         {/* <>{control}</> */}
-<MapContainer />
+        <div className='response__recyclable'>
+            <p>{isItRecyclable}</p>
+        </div>
+        <div className='response__location'>
+
+        </div>
+
+        <MapContainer />
         <ControlButton
           image={RestartIcon}
           alt='restart icon'
@@ -56,7 +65,7 @@ const ExpandedControl = props => {
           click={showForm}
           text={[
             'Did ',
-            <img src={KerbitLogo} alt='kerbit logo' />,
+            <img src={KerbitLogo} alt='kerbit logo' key='1' />,
             ' get something wrong?'
           ]}
         />

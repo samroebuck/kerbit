@@ -46,13 +46,15 @@ class MapContainer extends React.Component {
 
  
   render() {
+    const key = process.env.REACT_APP_MAPS_KEY;
+
     return (
       // Important! Always set the container height explicitly
       <div className='response__map'>
       <p>Your closest centre is</p>
       <div style={{ height: '90%', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyAktrqUtTebXXG7ZufiZI-uB2rPKIAt--U' }}
+          bootstrapURLKeys={{ key: `${key}` }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           yesIWantToUseGoogleMapApiInternals

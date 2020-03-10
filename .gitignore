@@ -8,9 +8,9 @@
 # testing
 /coverage
 
-# firebase
+# keys
 
-/src/firebase
+.env
 
 # production
 /build
