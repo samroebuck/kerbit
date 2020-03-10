@@ -7,7 +7,7 @@ const FixForm = props => {
       <div className='form'>
     <h3 className='form__title'>What did  <img src={KerbitLogo} alt='kerbit logo' /> <br></br> get wrong?</h3>
     <form name='kerbit-wrong' netlify='true' >
-      <input type='hidden' name='form-name' value='contact' />
+      <input type='hidden' name='form-name' value='kerbit-wrong' />
 
       <label htmlFor='wrong' className='form__wronglabel'>Kerbit guessed:</label>
       <input className='form__wronginput' type='text' name='wrong' required />
