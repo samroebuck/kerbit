@@ -8,17 +8,53 @@ import HelpButton from '../images/collapse.svg';
 import FlashButton from '../images/flash.svg';
 import MapContainer from '../components/MapContainer';
 import RecyclingCentre from '../images/centre.svg';
-
+import Bin from '../images/bin.svg';
+import BinGreen from '../images/binGreen.svg';
 
 const ExpandedControl = props => {
   const { discardImage, sharePredication, showForm } = props;
 
-  //   const control = props.prediction === 'FURNITURE' ? <MapContainer /> : '';
+  let displayMap = props.prediction === 'FURNITURE' ? <MapContainer /> : '';
 
-  const isItRecyclable =
-    props.prediction !== 'BATTERIES' || props.prediction !== 'TRASH'
-      ? <p>HELL YEAH, IT'S <br></br> <span>RECYCLABLE</span></p>
-      : <p>OH NO, IT'S <br></br> <span>NOT RECYCLABLE</span></p>;
+  let isItRecyclable =
+    props.prediction !== 'BATTERIES' || props.prediction !== 'TRASH' ? (
+      <p>
+        HELL YEAH, IT'S <br></br> <span>RECYCLABLE</span>
+      </p>
+    ) : (
+      <p>
+        OH NO, IT'S <br></br> <span>NOT RECYCLABLE</span>
+      </p>
+    );
+
+  let location;
+  switch (props.prediction) {
+    case 'TRASH':
+      location = (
+        <>
+          <img src={Bin} alt='recycling centre icon'></img>
+          <p>Black bin</p>
+        </>
+      );
+      break;
+    case 'FURNITURE':
+    case 'GLASS':
+    case 'KITCHENWARES':
+      location = (
+        <>
+          <img src={RecyclingCentre} alt='recycling centre icon'></img>
+          <p>Recycling Centre</p>
+        </>
+      );
+      break;
+    default:
+      location = (
+        <>
+          <img src={BinGreen} alt='recycling centre icon'></img>
+          <p>Green bin</p>
+        </>
+      );
+  }
 
   return (
     <section className='controls controls--expanded'>
@@ -44,16 +80,10 @@ const ExpandedControl = props => {
         <header className='response__prediction'>
           <h2> IT 'S... {props.prediction}</h2>
         </header>
-        {/* <>{control}</> */}
-        <div className='response__recyclable'>
-          {isItRecyclable}
-        </div>
-        <div className='response__location'>
-            <img src={RecyclingCentre} alt='recycling centre icon' />
-            <p>Recycling centre</p>
-        </div>
+        <>{displayMap}</>
+        <div className='response__recyclable'>{isItRecyclable}</div>
+        <div className='response__location'>{location}</div>
 
-        <MapContainer />
         <ControlButton
           image={RestartIcon}
           alt='restart icon'

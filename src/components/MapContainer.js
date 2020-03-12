@@ -1,11 +1,15 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import data from '../data/mapdata.json';
 
-const dataurl = process.env.PUBLIC_URL + '/mapdata.json';
+const getInfoWindowString = features => `
+    <div>
+      <div style="font-size: 16px;">
+        ${features.properties['Site Name']}
+      </div>
+    </div>`;
 
 const handleApiLoaded = (map, maps) => {
-  map.data.loadGeoJson(dataurl)
-
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function getLocation(position) {
       var pos = {
@@ -13,60 +17,71 @@ const handleApiLoaded = (map, maps) => {
         lng: position.coords.longitude
       };
       map.setCenter(pos);
-     }); 
+    });
   }
-}
 
-function createMapOptions(maps) {
-  // next props are exposed at maps
-  // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
-  // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
-  // "DirectionsStatus", "DirectionsTravelMode", "DirectionsUnitSystem", "DistanceMatrixStatus",
-  // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
-  // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
+  let mapdata = data.features;
+  const markers = [];
+  const infowindows = [];
+
+  mapdata.forEach(features => {
+    markers.push(
+      new maps.Marker({
+        position: {
+          lat: features.geometry.coordinates[1],
+          lng: features.geometry.coordinates[0]
+        },
+        map
+      })
+    );
+
+    infowindows.push(
+      new maps.InfoWindow({
+        content: getInfoWindowString(features)
+      })
+    );
+  });
+
+  markers.forEach((marker, i) => {
+    marker.addListener('click', () => {
+      infowindows[i].open(map, marker);
+    });
+  });
+};
+
+const createMapOptions = () => {
   return {
-    zoomControlOptions: {
-      position: maps.ControlPosition.RIGHT_CENTER,
-      style: maps.ZoomControlStyle.SMALL
-    },
-    mapTypeControlOptions: {
-      position: maps.ControlPosition.TOP_RIGHT
-    },
-    mapTypeControl: true
+    disableDefaultUI: true
   };
-}
-
-
+};
 
 class MapContainer extends React.Component {
   static defaultProps = {
     center: { lat: 53.806683, lng: -1.555033 },
-    zoom: 13
+    zoom: 15
   };
 
- 
   render() {
     const key = process.env.REACT_APP_MAPS_KEY;
 
     return (
-      // Important! Always set the container height explicitly
       <div className='response__map'>
-      <p>Your closest centre is</p>
-      <div style={{ height: '250px', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: `${key}` }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-          yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
-          options={createMapOptions}
-        >
-        </GoogleMapReact>
-      </div>
+        <p>Your closest centre is</p>
+        <div style={{ height: '250px', width: '100%' }}>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: `${key}` }}
+            defaultCenter={this.props.center}
+            defaultZoom={this.props.zoom}
+            yesIWantToUseGoogleMapApiInternals
+            onGoogleApiLoaded={({ map, maps, google }) =>
+              handleApiLoaded(map, maps, google)
+            }
+            options={createMapOptions}
+          ></GoogleMapReact>
+        </div>
       </div>
     );
   }
 }
-
 
 export default MapContainer;

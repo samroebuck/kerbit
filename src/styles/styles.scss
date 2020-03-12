@@ -126,7 +126,7 @@ button:disabled {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   // grid-template-rows: repeat(8, 1fr);
-  grid-template-rows: 50px repeat(2, 50px) repeat(4, 1fr) 55px;
+  // grid-template-rows: 50px repeat(2, 50px) repeat(4, 1fr) 55px;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 
@@ -207,15 +207,19 @@ button:disabled {
     box-shadow: 0px 2px 5px $grey;
 
     &--bottomfirst {
-      grid-area: 8 / 2 / 8 / 1;
+      // grid-area: 8 / 2 / 8 / 1;
+      grid-column-start: 1;
     }
 
     &--bottomsecond {
-      grid-area: 8 / 2 / 8 / 3;
+      // grid-area: 8 / 2 / 8 / 3;
+      grid-column-start: 2;
     }
 
     &--bottomthird {
-      grid-area: 8 / 3 / 8 / 6;
+      // grid-area: 8 / 3 / 8 / 6;
+      grid-column-start: 3;
+      grid-column-end: 6;
       background-color: $pink;
       color: $white;
       @include font-roboto-slab(em(16), $white, 500);
