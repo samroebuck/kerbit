@@ -1,5 +1,6 @@
-import KerbitLogo from '../images/logo-refined-spacing.svg';
 import React from 'react';
+// Images
+import KerbitLogo from '../../images/logo-refined-spacing.svg';
 
 const FixForm = props => {
   return (

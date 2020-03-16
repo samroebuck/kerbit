@@ -1,15 +1,17 @@
 import React from 'react';
-import ControlButton from '../components/ControlButton';
-import CameraButton from '../images/camerabutton.svg';
-import RestartIcon from '../images/restart-icon.svg';
-import ShareButtton from '../images/share.svg';
-import KerbitLogo from '../images/logo-refined-spacing.svg';
-import HelpButton from '../images/collapse.svg';
-import FlashButton from '../images/flash.svg';
-import MapContainer from '../components/MapContainer';
-import RecyclingCentre from '../images/centre.svg';
-import Bin from '../images/bin.svg';
-import BinGreen from '../images/binGreen.svg';
+// Components
+import ControlButton from './ControlButton';
+import MapContainer from './MapContainer';
+// Images
+import CameraButton from '../../images/camerabutton.svg';
+import RestartIcon from '../../images/restart-icon.svg';
+import ShareButtton from '../../images/share.svg';
+import KerbitLogo from '../../images/logo-refined-spacing.svg';
+import HelpButton from '../../images/collapse.svg';
+import FlashButton from '../../images/flash.svg';
+import RecyclingCentre from '../../images/centre.svg';
+import Bin from '../../images/bin.svg';
+import BinGreen from '../../images/binGreen.svg';
 
 const ExpandedControl = props => {
   const { discardImage, sharePredication, showForm } = props;

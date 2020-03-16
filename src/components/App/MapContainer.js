@@ -1,6 +1,8 @@
 import React from 'react';
+// modules
 import GoogleMapReact from 'google-map-react';
-import data from '../data/mapdata.json';
+// data
+import data from '../../data/mapdata.json';
 
 const getInfoWindowString = features => `
     <div>

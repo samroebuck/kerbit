@@ -1,8 +1,9 @@
 import React from 'react';
-import ControlButton from '../components/ControlButton';
-import CameraButton from '../images/camerabutton.svg';
-import HelpButton from '../images/collapse.svg'
-import FlashButton from '../images/flash.svg'
+// images
+import ControlButton from './ControlButton';
+import CameraButton from '../../images/camerabutton.svg';
+import HelpButton from '../../images/collapse.svg'
+import FlashButton from '../../images/flash.svg'
 
 const CollapseControl = (props) => {
     const { captureImage, disabledOnForm } = props;

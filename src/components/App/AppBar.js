@@ -1,5 +1,6 @@
 import React from "react";
-import KerbitLogo from "../images/logo-refined-spacing.svg";
+// images
+import KerbitLogo from "../../images/logo-refined-spacing.svg";
 
 const AppBar = () => (
   <header className='appbar'>

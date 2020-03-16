@@ -1,0 +1,10 @@
+@import './base/_reset.scss';
+@import './base/_typography.scss';
+@import './base/_colours.scss';
+
+// main styles
+
+main {
+  background: linear-gradient(0deg, $white 0%, $darkGreen 100%);
+  padding: 30px;
+}

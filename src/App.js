@@ -1,15 +1,16 @@
 import React from 'react';
-import AppBar from './components/AppBar.js';
-import Camera from './components/Camera';
-import ControlBar from './components/ControlBar';
-import { Webcam } from './components/Webcam.js';
-import LoadingSpinner from './components/LoadingSpinner';
-import FixForm from './components/FixForm'
+import AppBar from './components/App/AppBar';
+import Camera from './components/App/Camera';
+import ControlBar from './components/App/ControlBar';
+import { Webcam } from './components/App/Webcam.js';
+import LoadingSpinner from './components/App/LoadingSpinner';
+import FixForm from './components/App/FixForm'
+
 
 
 import * as automl from '@tensorflow/tfjs-automl';
 
-import './styles/styles.scss';
+import './styles/appStyles.scss';
 
 class App extends React.Component {
   constructor(props) {

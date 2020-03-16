@@ -1,6 +1,7 @@
 import React from 'react';
-import ExpandedControl from '../components/ExpandedControl'
-import CollapseControl from '../components/CollapseControl';
+// components
+import ExpandedControl from './ExpandedControl'
+import CollapseControl from './CollapseControl';
 
 
 class ControlBar extends React.Component {
