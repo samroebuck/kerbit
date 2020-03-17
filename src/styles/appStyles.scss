@@ -389,7 +389,7 @@ $dashOffsetEnd: 0;
   }
 }
 
-svg {
+.loader {
   position: absolute;
   top: 40%;
   height: 20vh;
@@ -405,16 +405,16 @@ svg {
     infinite,
     cubic-bezier(0.785, 0.135, 0.15, 0.86)
   );
-}
 
-path {
-  stroke: $pink;
-  fill: $pink;
-  fill-opacity: 0;
-  stroke-width: 0.5;
-  stroke-dasharray: $dashOffsetStart;
-  stroke-dashoffset: $dashOffsetStart;
-  @include animation(stroke-draw, 0s, 3s, infinite, ease-in-out);
+  path {
+    stroke: $pink;
+    fill: $pink;
+    fill-opacity: 0;
+    stroke-width: 0.5;
+    stroke-dasharray: $dashOffsetStart;
+    stroke-dashoffset: $dashOffsetStart;
+    @include animation(stroke-draw, 0s, 3s, infinite, ease-in-out);
+  }
 }
 
 #arrow-bottom path {

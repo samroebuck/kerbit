@@ -4,17 +4,50 @@ import App from './App';
 import Web from './Web';
 import * as serviceWorker from './serviceWorker';
 
-let isDownloaded;
-if (navigator.standalone) {
-  isDownloaded = true;
-} else if (matchMedia('(display-mode: standalone)').matches) {
-  isDownloaded = true;
-} else {
-  isDownloaded = false;
+
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      downloaded: false
+    };
+  }
+
+  componentDidMount() {
+      if (navigator.standalone) {
+        console.log('Launched: Installed (iOS)');
+        this.setState({
+          downloaded: true
+        })
+      } else if (matchMedia('(display-mode: standalone)').matches) {
+        console.log('Launched: Installed');
+        this.setState({
+          downloaded: true
+        })
+      } else {
+        console.log('Launched: Browser Tab');
+        this.setState({
+          downloaded: false
+        })
+      }
+  }
+
+
+  render() {
+    return (
+      <>
+       {this.state.downloaded === true ? <App /> : <Web />}
+       
+        {/* <App/> */}
+       </>
+    );
+  }
 }
 
+
 ReactDOM.render(
-  isDownloaded === true ? <App /> : <Web />,
+  <Index />,
   document.getElementById('root')
 );
 

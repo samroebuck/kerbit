@@ -1,7 +1,7 @@
 import React from "react";
 
 const LoadingSpinner = () => {
-    return <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.36 34.26" aria-labelledby="loadingIcon loadingDesc" >
+    return <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.36 34.26" aria-labelledby="loadingIcon loadingDesc" className='loader' >
     <title id='loadingIcon'>Loading icon</title>
        <desc id="loadingDesc">Spining recycling logo to indicate there is something loading</desc>
     <g id="arrow-top">

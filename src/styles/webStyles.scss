@@ -6,5 +6,98 @@
 
 main {
   background: linear-gradient(0deg, $white 0%, $darkGreen 100%);
-  padding: 30px;
+  height: auto;
+}
+
+.deviceImg {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  height: 500px;
+  z-index: 1;
+}
+
+.title {
+  margin: 15px;
+}
+
+.positioning {
+  position: relative;
+}
+
+.steps {
+  margin: 15px;
+  z-index: 0;
+  background-color: #f8f8f6;
+  padding: 20px;
+  border-radius: 20px;
+  padding-top: 150px;
+  margin-top: -150px;
+  box-shadow: 0px 2px 5px lighten($grey, 0.2);
+
+  &__box {
+    height: 80px;
+    margin-bottom: 15px;
+    padding: 25px;
+    @include font-roboto-slab(em(22), $white, 400);
+    line-height: 1.6;
+
+    &--first {
+      background-color: $purple;
+    }
+
+    &--second {
+      background-color: $lightGreen;
+    }
+
+    &--third {
+      background-color: $darkGreen;
+    }
+
+    &--fourth {
+      background-color: $pink;
+    }
+
+    &--first,
+    &--third {
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top-left-radius: 20px;
+
+      img {
+        margin-right: 20px;
+      }
+    }
+
+    &--second,
+    &--fourth {
+      flex-direction: row-reverse;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top-right-radius: 20px;
+
+      img {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 40px;
+  // margin: 20px 0px;
+
+  &__icon {
+    background-color: $pink;
+    height: 60px;
+    width: 60px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+  }
 }

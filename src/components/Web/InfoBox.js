@@ -1,9 +1,10 @@
 import React from 'react';
 
-const InfoBox = () => {
+const InfoBox = (props) => {
     return (
-        <div>
-            
+        <div className={props.class}>
+            <img src={props.imgSrc} alt={props.imgAlt} />
+            <p>{props.boxContent}</p>
         </div>
     );
 };

@@ -6,8 +6,6 @@ import { Webcam } from './components/App/Webcam.js';
 import LoadingSpinner from './components/App/LoadingSpinner';
 import FixForm from './components/App/FixForm'
 
-
-
 import * as automl from '@tensorflow/tfjs-automl';
 
 import './styles/appStyles.scss';
