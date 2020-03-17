@@ -19,6 +19,7 @@ const InfoBoxContainer = (props) => {
     );
     return (
         <div className='steps'>
+        <h2>RECYCLING IN 4 EASY STEPS</h2>
         {content}
         </div>
     );

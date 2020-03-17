@@ -10,6 +10,9 @@ import logo from './images/logo-refined-spacing.svg';
 import app from './images/mockup-forweb.svg';
 
 class Web extends React.Component {
+  componentDidMount() {
+    document.querySelector('#root').classList.add('webMain');
+  }
   render() {
     return (
       <>
@@ -19,9 +22,9 @@ class Web extends React.Component {
         <InfoBoxContainer>{this.props.children}</InfoBoxContainer>
         </div>
         <SocialIconContainer>{this.props.children}</SocialIconContainer>
+        <div className='download'> <p>DOWNLOAD ON A SUPPORTED <br/> MOBILE DEVICE</p> </div>
         <PWAPrompt 
             delay={0}
-            debug={true}
         />
       </>
     );

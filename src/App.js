@@ -22,6 +22,10 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    document.querySelector('#root').classList.add('appMain');
+  }
+
   initializeCamera = () => {
     // initialize the camera
     this.canvasElement = document.createElement('canvas');
