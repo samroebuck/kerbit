@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Web from './Web';
 import * as serviceWorker from './serviceWorker';
+import './fonts/Brandon_bld.otf'
+import './fonts/Brandon_med.otf'
+import './fonts/Brandon_reg.otf'
+import './fonts/RobotoSlab-Bold.ttf'
+import './fonts/RobotoSlab-Regular.ttf'
+import './fonts/RobotoSlab-Light.ttf'
+
+
 
 
 class Index extends React.Component {
@@ -20,11 +28,16 @@ class Index extends React.Component {
         this.setState({
           downloaded: true
         })
+
+          document.querySelector('#root').classList.remove('webMain');
+        
       } else if (matchMedia('(display-mode: standalone)').matches) {
         console.log('Launched: Installed');
         this.setState({
           downloaded: true
         })
+        document.querySelector('#root').classList.remove('webMain');
+
       } else {
         console.log('Launched: Browser Tab');
         this.setState({

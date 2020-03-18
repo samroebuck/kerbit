@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-  <path id="Icon_ionic-md-refresh" data-name="Icon ionic-md-refresh" d="M20.625,31.875a11.25,11.25,0,0,1,0-22.5A10.9,10.9,0,0,1,28.5,12.75l-6,6H35.625V5.625l-4.406,4.406a14.981,14.981,0,1,0,3.844,14.684H31.1A11.171,11.171,0,0,1,20.625,31.875Z" transform="translate(-5.625 -5.625)" fill="#df948c"/>
-</svg>
+<svg height="30" viewBox="0 0 30 30" width="30" xmlns="http://www.w3.org/2000/svg"><path d="m20.625 31.875a11.25 11.25 0 0 1 0-22.5 10.9 10.9 0 0 1 7.875 3.375l-6 6h13.125v-13.125l-4.406 4.406a14.981 14.981 0 1 0 3.844 14.684h-3.963a11.171 11.171 0 0 1 -10.475 7.16z" fill="#df948c" transform="translate(-5.625 -5.625)"/></svg>
