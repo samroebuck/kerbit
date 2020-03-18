@@ -1,11 +1,15 @@
 @font-face {
   font-family: 'roboto slab';
+  font-display: auto;
+
   src: local('roboto slab'),
     url(../../fonts/RobotoSlab-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'brandon-grotesque';
+  font-display: auto;
+
   src: local('brandon-grotesque'),
     url(../../fonts/Brandon_reg.otf) format('opentype');
 }

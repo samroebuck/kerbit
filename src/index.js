@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Web from './Web';
+// import App from './App';
+// import Web from './Web';
 import * as serviceWorker from './serviceWorker';
+
+// fonts
 import './fonts/Brandon_bld.otf'
 import './fonts/Brandon_med.otf'
 import './fonts/Brandon_reg.otf'
@@ -10,7 +12,19 @@ import './fonts/RobotoSlab-Bold.ttf'
 import './fonts/RobotoSlab-Regular.ttf'
 import './fonts/RobotoSlab-Light.ttf'
 
+import Loadable from 'react-loadable'
 
+const Loading = () => <h1>Loading...</h1>; // loading component
+
+const LoadApp = Loadable({
+  loader: () => import('./App'),
+  loading: Loading,
+});
+
+const LoadWeb = Loadable({
+  loader: () => import('./Web'),
+  loading: Loading,
+});
 
 
 class Index extends React.Component {
@@ -50,7 +64,7 @@ class Index extends React.Component {
   render() {
     return (
       <>
-       {this.state.downloaded === true ? <App /> : <Web />}
+       {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}
        
         {/* <App/> */}
        </>
