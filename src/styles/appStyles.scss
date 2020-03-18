@@ -1,9 +1,9 @@
 @import './base/_reset.scss';
 @import './base/_typography.scss';
 @import './base/_colours.scss';
+@import './base/_animation.scss';
 
 // root styling
-
 .appMain {
   position: relative;
   height: 100vh;
@@ -336,29 +336,6 @@ button:disabled {
 // variables
 $dashOffsetStart: 800;
 $dashOffsetEnd: 0;
-
-// animation mixins
-
-@mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
-    @content;
-  }
-  @keyframes #{$animationName} {
-    @content;
-  }
-}
-
-@mixin animation(
-  $name,
-  $delay,
-  $duration,
-  $iteration,
-  $ease,
-  $fillmode: forwards
-) {
-  -webkit-animation: $name $duration $ease $delay $fillmode $iteration;
-  animation: $name $duration $ease $delay $fillmode $iteration;
-}
 
 // animation mixins
 

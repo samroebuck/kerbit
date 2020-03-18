@@ -1,36 +1,39 @@
 import React from 'react';
-// components
-import ExpandedControl from './ExpandedControl'
-import CollapseControl from './CollapseControl';
+import Loadable from 'react-loadable';
 
+// code splitting
+const Loading = () => <h1>Loading...</h1>; // loading component
 
-class ControlBar extends React.Component {
-  componentDidUpdate() {
-    if (this.props.prediction) {
-      console.log('has prediction');
-    }
-  }
-  render() {
-    const prediction = this.props.prediction;
-    const disableOnForm = this.props.disableOnForm;
+const LoadExpanded = Loadable({
+  loader: () => import('./ExpandedControl'),
+  loading: Loading
+});
+
+const LoadCollapsed = Loadable({
+  loader: () => import('./CollapseControl'),
+  loading: Loading
+});
+// code splitting
+
+const ControlBar = props => {
+    const { prediction, disableOnForm } = props 
 
     const control = prediction ? (
-      <ExpandedControl 
-        captureImage={this.props.captureImage}
-        discardImage={this.props.discardImage}
+      <LoadExpanded
+        captureImage={props.captureImage}
+        discardImage={props.discardImage}
         prediction={prediction}
-        sharePredication={this.props.sharePredication}
-        showForm={this.props.showForm}
+        sharePredication={props.sharePredication}
+        showForm={props.showForm}
       />
     ) : (
-      <CollapseControl 
-        captureImage={this.props.captureImage}
+      <LoadCollapsed
+        captureImage={props.captureImage}
         disabledOnForm={disableOnForm}
       />
     );
 
-    return <> {control} </>;
-  }
-}
+    return (<> {control} </>);
+    }
 
 export default ControlBar;

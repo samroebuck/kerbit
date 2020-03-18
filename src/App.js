@@ -1,14 +1,34 @@
+// react
 import React from 'react';
+
+//components
 import AppBar from './components/App/AppBar';
 import Camera from './components/App/Camera';
 import ControlBar from './components/App/ControlBar';
 import { Webcam } from './components/App/Webcam.js';
-import LoadingSpinner from './components/App/LoadingSpinner';
-import FixForm from './components/App/FixForm'
 
+// libraries
 import * as automl from '@tensorflow/tfjs-automl';
+import Loadable from 'react-loadable';
 
+// styles
 import './styles/appStyles.scss';
+
+// code splitting
+
+const Loading = () => <h1>Loading...</h1>; // loading component
+
+const LoadForm = Loadable({
+  loader: () => import('./components/App/FixForm'),
+  loading: Loading
+});
+
+const LoadSpinner = Loadable({
+  loader: () => import('./components/App/LoadingSpinner'),
+  loading: Loading
+});
+
+// component
 
 class App extends React.Component {
   constructor(props) {
@@ -46,7 +66,6 @@ class App extends React.Component {
     const image = document.querySelector('.cameracontainer__capturedimage');
     let predictions = await model.classify(image);
 
-    console.log(predictions);
     predictions.sort((a, b) =>
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
@@ -62,10 +81,6 @@ class App extends React.Component {
     ) {
       mostLikely = 'FURNITURE';
     }
-
-    // if (predictions[0].prob < 0.4) {
-    //   mostLikely = 'UNKNOWN'
-    // }
 
     this.setState({
       prediction: mostLikely
@@ -128,8 +143,8 @@ class App extends React.Component {
           initializeCamera={this.initializeCamera}
           captured={this.state.captured}
         />
-        {captured && !prediction ? <LoadingSpinner /> : <></>}
-        {wrong ? <FixForm /> : <></>}
+        {captured && !prediction ? <LoadSpinner /> : <></>}
+        {wrong ? <LoadForm /> : <></>}
         <ControlBar
           captureImage={this.captureImage}
           prediction={this.state.prediction}

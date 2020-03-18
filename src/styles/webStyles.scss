@@ -18,9 +18,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // max-height: 100vh;
-    // height: 100vh;
-    // overflow: hidden;
   }
 }
 
@@ -30,20 +27,10 @@
   position: relative;
   height: 500px;
   z-index: 1;
-  @include lg {
-    // position: absolute;
-    // right: 0;
-    // top: 5vh;
-    // height: 90vh;
-    // // width: 400px;
-  }
 }
 
 .title {
   @include lg {
-    // width: 50vw;
-    // margin: 0 auto;
-    // display: block;
     padding-top: 15px;
     text-align: center;
     width: 45vw;
@@ -159,14 +146,6 @@
   justify-content: space-around;
   padding: 10px 40px;
 
-  @include lg {
-    // justify-content: end;
-    // flex-direction: column;
-    // position: absolute;
-    // bottom: 9vh;
-    // left: 5vh;
-  }
-
   &__icon {
     background-color: $pink;
     height: 60px;
@@ -186,7 +165,6 @@
   @include font-brandon-grotesque(em(30), $white, 400);
   text-align: center;
   line-height: 1.4;
-  // width: 300px;
   border-radius: 10px;
   padding: 10px 30px;
 }

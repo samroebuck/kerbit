@@ -1,0 +1,20 @@
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation(
+  $name,
+  $delay,
+  $duration,
+  $iteration,
+  $ease,
+  $fillmode: forwards
+) {
+  -webkit-animation: $name $duration $ease $delay $fillmode $iteration;
+  animation: $name $duration $ease $delay $fillmode $iteration;
+}
