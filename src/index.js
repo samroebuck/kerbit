@@ -61,8 +61,8 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        {/* {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />} */}
-        <LoadApp />
+        {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}
+        {/* <LoadApp /> */}
       </>
     );
   }
