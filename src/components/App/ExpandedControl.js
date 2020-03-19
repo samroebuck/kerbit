@@ -1,12 +1,9 @@
 import React from 'react';
+
 // Components
-// import ControlButton from './ControlButton';
 import MapContainer from './MapContainer';
 import CameraButtonContainer from '../App/CameraButtonContainer'
 import ResponceButtonContaner from '../App/ResponceButtonContainer'
-
-// Images
-
 import RecycleLocation from './RecycleLocation'
 import Recyclable from './Recyclable'
 
