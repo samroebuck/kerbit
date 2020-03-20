@@ -1,6 +1,7 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 
+
 // code splitting
 const Loading = () => <h1>Loading...</h1>; // loading component
 
@@ -16,7 +17,7 @@ const LoadCollapsed = Loadable({
 // code splitting
 
 const ControlBar = props => {
-    const { prediction, disableOnForm } = props 
+    const { prediction, disableOnForm, help } = props 
 
     const control = prediction ? (
       <LoadExpanded
@@ -30,10 +31,13 @@ const ControlBar = props => {
       <LoadCollapsed
         captureImage={props.captureImage}
         disabledOnForm={disableOnForm}
+        displayHelp={props.displayHelp}   
+        help={help}   
       />
     );
 
-    return (<> {control} </>);
+    return (<> 
+    {control} </>);
     }
 
 export default ControlBar;

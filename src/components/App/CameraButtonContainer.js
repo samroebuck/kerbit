@@ -12,14 +12,15 @@ const ControlButtonContainer = props => {
           id: 1,
           image: HelpButton,
           alt: 'help button',
-          class: 'controls__helpbtn'
+          class: 'controls__helpbtn',
+          click: props.displayHelp
         },
         {
           id: 2,
           image: CameraButton,
           alt: 'camera shutter button',
           class: 'controls__capturebtn',
-          click: props.click
+          click: props.cameraClick
         },
         {
           id: 3,

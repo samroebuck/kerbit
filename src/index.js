@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // import App from './App';
 // import Web from './Web';
 import * as serviceWorker from './serviceWorker';
+import LoadingSpinner from './components/App/LoadingSpinner'
 
 // fonts
 import './fonts/Brandon_bld.otf';
@@ -15,16 +16,16 @@ import './fonts/RobotoSlab-Light.ttf';
 // code splitting
 import Loadable from 'react-loadable';
 
-const Loading = () => <h1>Loading...</h1>; // loading component
+
 
 const LoadApp = Loadable({
   loader: () => import('./App'),
-  loading: Loading
+  loading: LoadingSpinner
 });
 
 const LoadWeb = Loadable({
   loader: () => import('./Web'),
-  loading: Loading
+  loading: LoadingSpinner
 });
 
 class Index extends React.Component {
@@ -61,8 +62,8 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}
-        {/* <LoadApp /> */}
+        {/* {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />} */}
+        <LoadApp />
       </>
     );
   }

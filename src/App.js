@@ -38,7 +38,8 @@ class App extends React.Component {
       capturedImage: null,
       captured: false,
       prediction: '',
-      wrong: false
+      wrong: false,
+      help: true,
     };
   }
 
@@ -128,11 +129,19 @@ class App extends React.Component {
 
   showForm = () => {
     this.setState({
-      wrong: true,
+      wrong: true
     });
     this.discardImage();
   }
 
+
+  displayHelp = () => {
+    this.setState({
+      help: !this.state.help
+    });
+    }
+
+  
   render() {
     const { captured, prediction, wrong } = this.state;
     return (
@@ -152,6 +161,8 @@ class App extends React.Component {
           sharePredication={this.sharePredication}
           showForm={this.showForm}
           disableOnForm={this.state.wrong}
+          displayHelp={this.displayHelp}
+          help={this.state.help}
         ></ControlBar>
       </>
     );
