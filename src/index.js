@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import App from './App';
 // import Web from './Web';
 import * as serviceWorker from './serviceWorker';
-import LoadingSpinner from './components/App/LoadingSpinner'
+// import LoadingSpinner from './components/App/LoadingSpinner'
 
 // fonts
 import './fonts/Brandon_bld.otf';
@@ -20,12 +20,13 @@ import Loadable from 'react-loadable';
 
 const LoadApp = Loadable({
   loader: () => import('./App'),
-  loading: LoadingSpinner
+  loading: 'loading'
 });
 
 const LoadWeb = Loadable({
   loader: () => import('./Web'),
-  loading: LoadingSpinner
+  loading: 'loading'
+
 });
 
 class Index extends React.Component {
