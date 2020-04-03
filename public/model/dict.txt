@@ -1,6 +1,8 @@
-batteries
+mircowave
+toaster
+coffee-cups
+kettle
 kitchenwares
-trash
 metal
 plastic-bag
 glass
