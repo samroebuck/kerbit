@@ -3,6 +3,8 @@ import React from 'react';
 
 //images
 
+import Arrow from '../../images/arrow.svg'
+
 import Find from '../../images/find.svg';
 import Down from '../../images/download.svg';
 import Photo from '../../images/photo.svg'
@@ -13,6 +15,9 @@ const Help = props => {
   return (
     <div className='help'>
       <h1 className='help__title'>HOW TO</h1>
+      <button className='help__btn'>
+      <img src={Arrow} alt='find icon' />
+      </button>
       <img src={Find} alt='find icon' />
       <p>Find an item you want to recycle</p>
       <img src={Down} alt='find icon' />

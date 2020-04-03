@@ -41,7 +41,7 @@ class Main extends React.Component {
       captured: false,
       prediction: '',
       wrong: false,
-      help: true,
+      help: false,
     };
   }
 
@@ -107,7 +107,8 @@ class Main extends React.Component {
     this.setState({
       captured: false,
       capturedImage: null,
-      prediction: ''
+      prediction: '',
+      help: false
     });
   };
 
@@ -149,7 +150,7 @@ class Main extends React.Component {
     const { captured, prediction, wrong } = this.state;
     return (
       <>
-                  <AppBar></AppBar>
+        <AppBar discardImage={this.discardImage}></AppBar>
         <Camera
           capturedImage={this.state.capturedImage}
           initializeCamera={this.initializeCamera}

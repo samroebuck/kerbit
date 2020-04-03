@@ -75,6 +75,7 @@ button:disabled {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   // justify-content: center;
   box-shadow: -1px -3px 7px rgba(0, 0, 0, 0.2);
 
@@ -347,14 +348,16 @@ button:disabled {
   border-radius: 10px;
   padding: 20px 20px;
   margin-top: 15px;
-  // display: flex;
+  height: 18px;
+  overflow: hidden; // display: flex;
   // flex-direction: row;
   // flex-wrap: wrap;
-
   &__title {
     @include font-brandon-grotesque(em(22), $purple, bold);
     // flex-basis: 100%;
     // margin-bottom: 5px;
+    width: 88%;
+    display: inline-block;
   }
 
   img {
@@ -363,6 +366,17 @@ button:disabled {
     margin-right: 15px;
     width: 15%;
     display: inline-block;
+  }
+
+  &__btn {
+    display: inline-block;
+    width: 10%;
+
+    img {
+      width: unset;
+      margin: unset;
+      display: unset;
+    }
   }
 
   p {
