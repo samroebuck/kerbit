@@ -91,11 +91,11 @@ button:disabled {
     transition: height 300ms cubic-bezier(0, 0, 0.7, 1.61);
 
     .controls__helpbtn {
-      margin-left: 20px;
+      margin-left: 13px;
     }
 
     .controls__flashbtn {
-      margin-right: 20px;
+      margin-right: 10px;
     }
   }
 
@@ -238,21 +238,27 @@ button:disabled {
 // form
 
 .form {
-  position: absolute;
-  bottom: 10px;
-  height: auto;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(100vw - 20px);
+  // position: absolute;
+  // bottom: 10px;
+  // height: auto;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  // width: calc(100vw - 20px);
   // display: flex;
   // flex-direction: column;
-  background-color: $white;
+  background-color: $darkGreen;
+  height: 100vh;
+  width: 100vw;
   // justify-content: space-between;
   z-index: 1;
-  border-radius: 15px;
-  box-shadow: 0px 2px 5px $grey;
+  // border-radius: 15px;
+  // box-shadow: 0px 2px 5px $grey;
 
   form {
+    background-color: $white;
+    width: 90vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 40px) auto repeat(3, 1fr);
@@ -267,7 +273,7 @@ button:disabled {
     background-color: $white;
     box-shadow: 0px 1px 5px $grey;
     border: unset;
-    border-radius: 5px;
+    // border-radius: 5px;
     transition: all 0.2s ease-in-out;
     border: 1px solid $pink;
 
@@ -282,12 +288,12 @@ button:disabled {
   }
 
   &__title {
-    background-color: $darkGreen;
+    // background-color: $darkGreen;
     @include font-roboto-slab(em(24), $white, 500);
     text-align: center;
     padding: 20px 20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    // border-top-left-radius: 10px;
+    // border-top-right-radius: 10px;
     justify-self: center;
     margin-bottom: 20px;
     line-height: 1.2;

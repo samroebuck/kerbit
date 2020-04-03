@@ -33,6 +33,7 @@ const ControlBar = props => {
         disabledOnForm={disableOnForm}
         displayHelp={props.displayHelp}   
         help={help}   
+        showForm={props.showForm}
       />
     );
 

@@ -15,12 +15,14 @@ export class Webcam {
   
     async setup() {
       return new Promise((resolve, reject) => {
+
         if (navigator.mediaDevices.getUserMedia !== undefined) {
           navigator.mediaDevices
             .getUserMedia({ audio: false, video: { facingMode: "environment" } })
             .then(mediaStream => {
               if ("srcObject" in this.webcamElement) {
                 this.webcamElement.srcObject = mediaStream;
+
               } else {
                 // For older browsers withouth the srcObject.
                 this.webcamElement.src = window.URL.createObjectURL(mediaStream);
@@ -36,7 +38,8 @@ export class Webcam {
                 },
                 false
               );
-            });
+            })
+            
         } else {
           reject();
         }

@@ -3,8 +3,8 @@ import React from 'react';
 import ControlButton from './ControlButton';
 
 import CameraButton from '../../images/camerabutton.svg';
-import HelpButton from '../../images/collapse.svg';
-import FlashButton from '../../images/flash.svg';
+import HelpButton from '../../images/help.svg';
+import FlashButton from '../../images/message.svg';
 
 const ControlButtonContainer = props => {
     const buttons = [
@@ -25,8 +25,10 @@ const ControlButtonContainer = props => {
         {
           id: 3,
           image: FlashButton,
-          alt: 'flash button',
+          alt: 'message button',
           class: 'controls__flashbtn',
+          // click: props.showForm
+          path: '/FixForm'
         }
       ];
 
@@ -39,6 +41,7 @@ const ControlButtonContainer = props => {
       click={button.click}
       disabled={props.disabled}
       class={button.class}
+      path={button.path}
     />
   ));
   return <>{ content }</>;

@@ -6,7 +6,7 @@ const FixForm = props => {
   return (
     <div className='form'>
       <h3 className='form__title'>
-        What did <img src={KerbitLogo} alt='kerbit logo' /> <br></br> get wrong?
+        Something wrong with <img src={KerbitLogo} alt='kerbit logo' />?
       </h3>
       <form name='kerbit-wrong' netlify='true'>
         <input type='hidden' name='form-name' value='kerbit-wrong' />
