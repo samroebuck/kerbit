@@ -4,10 +4,13 @@ import ControlButton from './ControlButton';
 
 import RestartIcon from '../../images/restart-icon.svg';
 import ShareButtton from '../../images/share.svg';
-import KerbitLogo from '../../images/logo-refined-spacing.svg';
 
 
 const ControlButtonContainer = props => {
+    let prediction = props.prediction.toLowerCase(); 
+    if (prediction === 'electicals') {
+      prediction = 'electrical'
+    }
     const buttons = [
         {
           id: 1,
@@ -25,14 +28,10 @@ const ControlButtonContainer = props => {
         },
         {
           id: 3,
-          image: '',
-          alt: 'flash button',
           class: 'response__btn response__btn--bottomthird',
-          click: props.formClick,
+          href: `https://www.leeds.gov.uk/residents/bins-and-recycling/a-to-z-of-reusing-recycling-and-waste-disposal?k=%27${props.prediction}%27`,
           text: [
-            'Did ',
-            <img src={KerbitLogo} alt='kerbit logo' key='1' />,
-            ' get something wrong?'
+            `Find out more about recycling ${prediction}!`
           ]
         }
       ];
@@ -41,6 +40,7 @@ const ControlButtonContainer = props => {
   const content = buttons.map(button => (
     <ControlButton
       key={button.id}
+      href={button.href}
       image={button.image}
       alt={button.alt}
       click={button.click}

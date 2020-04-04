@@ -22,11 +22,11 @@ const LoadApp = Loadable({
   loading: 'loading'
 });
 
-// const LoadWeb = Loadable({
-//   loader: () => import('./Web'),
-//   loading: 'loading'
+const LoadWeb = Loadable({
+  loader: () => import('./Web'),
+  loading: 'loading'
 
-// });
+});
 
 class Index extends React.Component {
   constructor(props) {
@@ -62,8 +62,8 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        {/* {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />} */}
-        <LoadApp />
+        {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}
+        {/* <LoadApp /> */}
       </>
     );
   }

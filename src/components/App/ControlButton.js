@@ -19,6 +19,18 @@ const ControlButton = props => {
         <img src={props.image} alt={props.alt} />
       </button>
     );
+     } else if (props.href) {
+      button = (
+        <a
+          className={props.class}
+          onClick={props.click}
+          href={props.href}
+          target='_blank'
+          rel="noopener noreferrer"
+        >
+          {props.text}
+        </a>
+      );
   } else {
     button = (
       <button className={props.class} onClick={props.click}>

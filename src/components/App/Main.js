@@ -1,8 +1,6 @@
 // react
 import React from 'react';
 
-
-
 //components
 import AppBar from './AppBar';
 import Camera from './Camera';
@@ -19,11 +17,6 @@ import '../../styles/appStyles.scss';
 // code splitting
 
 const Loading = () => <h1>Loading...</h1>; // loading component
-
-const LoadForm = Loadable({
-  loader: () => import('./FixForm'),
-  loading: Loading
-});
 
 const LoadSpinner = Loadable({
   loader: () => import('./LoadingSpinner'),
@@ -84,6 +77,13 @@ class Main extends React.Component {
     ) {
       mostLikely = 'FURNITURE';
     }
+    if (
+      mostLikely === 'MIRCOWAVE' ||
+      mostLikely === 'KETTLE' ||
+      mostLikely === 'TOASTER' 
+    ) {
+      mostLikely = 'ELECTRICALS';
+    }
 
     this.setState({
       prediction: mostLikely
@@ -130,15 +130,6 @@ class Main extends React.Component {
  
   }
 
-  showForm = () => {
-    this.setState({
-      wrong: true,
-      help: false
-    });
-    this.discardImage();
-  }
-
-
   displayHelp = () => {
     this.setState({
       help: !this.state.help
@@ -147,7 +138,7 @@ class Main extends React.Component {
 
   
   render() {
-    const { captured, prediction, wrong } = this.state;
+    const { captured, prediction } = this.state;
     return (
       <>
         <AppBar discardImage={this.discardImage}></AppBar>
@@ -157,7 +148,6 @@ class Main extends React.Component {
           captured={this.state.captured}
         />
         {captured && !prediction ? <LoadSpinner /> : <></>}
-        {wrong ? <LoadForm /> : <></>}
         
         <ControlBar
           captureImage={this.captureImage}

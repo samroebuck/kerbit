@@ -11,8 +11,11 @@ import Photo from '../../images/photo.svg'
 import Recycle from '../../images/recycle.svg'
 
 
+
+
 const Help = props => {
   return (
+    <>
     <div className='help'>
       <h1 className='help__title'>HOW TO</h1>
       <button className='help__btn'>
@@ -27,6 +30,7 @@ const Help = props => {
       <img src={Recycle} alt='find icon' />
       <p>Kerbit will let you know if you can recycle it</p>
     </div>
+    </>
   );
 };
 

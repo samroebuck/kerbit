@@ -28,7 +28,7 @@ const ControlButtonContainer = props => {
           alt: 'message button',
           class: 'controls__flashbtn',
           // click: props.showForm
-          path: '/FixForm'
+          path: '/Contact'
         }
       ];
 

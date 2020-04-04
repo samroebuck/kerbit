@@ -10,7 +10,10 @@ import Recyclable from './Recyclable'
 const ExpandedControl = props => {
   const { discardImage, sharePredication, showForm } = props;
 
-  let displayMap = props.prediction === 'FURNITURE' ? <MapContainer /> : '';
+  let displayMap; 
+  if (props.prediction === 'FURNITURE' || props.prediction === 'ELECTRICALS'){
+    displayMap = <MapContainer />
+  };
 
 
 
@@ -25,7 +28,7 @@ const ExpandedControl = props => {
         <>{displayMap}</>
         <Recyclable prediction={props.prediction} />
         <RecycleLocation prediction={props.prediction} />
-        <ResponceButtonContaner restartClick={discardImage}  shareClick={sharePredication} formClick={showForm}/>
+        <ResponceButtonContaner prediction={props.prediction} restartClick={discardImage}  shareClick={sharePredication} formClick={showForm}/>
       </div>
     </section>
   );
