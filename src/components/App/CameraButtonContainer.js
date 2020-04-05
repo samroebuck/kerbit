@@ -3,14 +3,17 @@ import React from 'react';
 import ControlButton from './ControlButton';
 
 import CameraButton from '../../images/camerabutton.svg';
+import HelpButtonFill from '../../images/help-fill.svg';
 import HelpButton from '../../images/help.svg';
+
 import FlashButton from '../../images/message.svg';
 
 const ControlButtonContainer = props => {
+  const helpButton = props.help === true ? HelpButton : HelpButtonFill  
     const buttons = [
         {
           id: 1,
-          image: HelpButton,
+          image: helpButton ,
           alt: 'help button',
           class: 'controls__helpbtn',
           click: props.displayHelp

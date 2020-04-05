@@ -106,7 +106,7 @@ button:disabled {
     border-radius: 100%;
     height: 56px;
     width: 56px;
-    box-shadow: 0px 2px 5px #000000;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     align-self: center;
 
     &--disabled {
@@ -115,11 +115,19 @@ button:disabled {
   }
 
   &__helpbtn {
+    border-radius: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
     @extend .reset-Button;
+    img {
+      height: 35px;
+    }
   }
 
   &__flashbtn {
     @extend .reset-Button;
+    border-radius: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -346,7 +354,8 @@ button:disabled {
 }
 // help
 
-.help {
+.help,
+.knows {
   flex-basis: 100%;
   background-color: $white;
   border-radius: 10px;
@@ -356,6 +365,16 @@ button:disabled {
   overflow: hidden; // display: flex;
   // flex-direction: row;
   // flex-wrap: wrap;
+
+  &--expandedtrue {
+    height: auto;
+    overflow: auto;
+
+    button img:first-of-type {
+      transform: rotate(180deg);
+    }
+  }
+
   &__title {
     @include font-brandon-grotesque(em(22), $purple, bold);
     // flex-basis: 100%;
@@ -376,7 +395,7 @@ button:disabled {
     display: inline-block;
     width: 10%;
 
-    img {
+    .btn__image {
       width: unset;
       margin: unset;
       display: unset;
@@ -391,6 +410,11 @@ button:disabled {
     line-height: 1.3;
     vertical-align: middle;
   }
+}
+
+.knows img {
+  margin-right: unset;
+  margin-left: 15px;
 }
 
 // animation
