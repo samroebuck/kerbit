@@ -2,6 +2,7 @@
 @import './base/_typography.scss';
 @import './base/_colours.scss';
 @import './base/_animation.scss';
+@import './base/_mediaqueries.scss';
 
 // root styling
 .appMain {
@@ -17,7 +18,7 @@ button:disabled {
 
 .appbar {
   background-color: $darkGreen;
-  height: 7.5vh;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,8 +26,12 @@ button:disabled {
   z-index: 1;
   width: 100vw;
 
+  button {
+    @extend .reset-Button;
+  }
+
   &__logo {
-    width: 40vw;
+    width: 150px;
     padding: 10px;
   }
 }
@@ -110,7 +115,7 @@ button:disabled {
     align-self: center;
 
     &--disabled {
-      opacity: 0.6;
+      opacity: 0.4;
     }
   }
 
@@ -485,4 +490,61 @@ $dashOffsetEnd: 0;
 
 #arrow-side path {
   animation-delay: 1s;
+}
+
+@media (orientation: landscape) {
+  .appbar {
+    display: none;
+  }
+
+  .controls {
+    transform: translateX(90%) rotate(-90deg);
+    width: calc(100vh - 80px);
+    /* right: 0px; */
+    /* top: 10px; */
+    transform-origin: left bottom;
+
+    &.controls--expanded {
+      transform: translateX(90%) rotate(-90deg);
+      width: calc(100vh - 40px);
+      /* right: 0px; */
+      /* top: 10px; */
+      transform-origin: left bottom;
+    }
+
+    &__flashbtn,
+    &__helpbtn {
+      transform: rotate(90deg);
+    }
+  }
+
+  .help,
+  .knows {
+    // transform: rotate(90deg);
+    // transform-origin: top right;
+    flex-basis: unset;
+
+    &.help--expandedtrue {
+      transform: rotate(90deg);
+    }
+
+    &.knows--expandedtrue {
+      transform: rotate(90deg);
+    }
+  }
+
+  .contactpage {
+    height: auto;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+  }
+
+  .cameracontainer__capturedimage {
+    margin-top: -15px;
+  }
+
+  .response {
+    transform-origin: top left;
+    transform: translateX(100%) rotate(90deg);
+  }
 }

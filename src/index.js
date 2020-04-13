@@ -22,11 +22,11 @@ const LoadApp = Loadable({
   loading: 'loading'
 });
 
-const LoadWeb = Loadable({
-  loader: () => import('./Web'),
-  loading: 'loading'
+// const LoadWeb = Loadable({
+//   loader: () => import('./Web'),
+//   loading: 'loading'
 
-});
+// });
 
 class Index extends React.Component {
   constructor(props) {
