@@ -144,6 +144,7 @@ button:disabled {
   // grid-template-rows: 50px repeat(2, 50px) repeat(4, 1fr) 55px;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  width: 100%;
 
   &__prediction {
     grid-area: 1 / 1 / 2 / 6;
@@ -167,7 +168,28 @@ button:disabled {
     padding: 10px;
     box-shadow: 0px 2px 5px $grey;
 
-    p {
+    .info {
+      &__title {
+        @include font-roboto-slab(em(16), $purple, 500);
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      &__type {
+        @include font-roboto-slab(em(14), #707070, 500);
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+
+      &__address {
+        @include font-roboto-slab(em(14), #707070, 500);
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+    }
+
+    .map__title {
       @include font-roboto-slab(em(18), #707070, 500);
       border-bottom: $pink 2px solid;
       padding: 5px;
