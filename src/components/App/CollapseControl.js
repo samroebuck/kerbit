@@ -12,6 +12,18 @@ class CollapseControl extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log('mounted collapse control')
+    let visited = localStorage["alreadyVisited"];
+    console.log(visited)
+        if(visited) {
+             this.setState({ expandedHowTo: true })
+        } else {
+             this.setState({ expandedHowTo: false});
+             localStorage["alreadyVisited"] = true;
+        }
+  }
+
   handleAccordian = (e) => {
     let element = e.target.tagName === 'BUTTON' ? e.target : e.target.parentElement ;
     if (element.classList.contains('help__btn')) {

@@ -23,7 +23,7 @@ const ExpandedControl = props => {
         </CameraButtonContainer>
       <div className='response'>
         <header className='response__prediction'>
-          <h2> IT 'S... {props.prediction}</h2>
+          <h2>{props.prediction}</h2>
         </header>
         <>{displayMap}</>
         <Recyclable prediction={props.prediction} />

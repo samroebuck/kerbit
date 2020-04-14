@@ -24,7 +24,7 @@ class Web extends React.Component {
         <SocialIconContainer>{this.props.children}</SocialIconContainer>
         <div className='download'> <p>DOWNLOAD ON A SUPPORTED <br/> MOBILE DEVICE</p> </div>
         <PWAPrompt 
-            delay={0}
+            delay={5}
         />
       </>
     );

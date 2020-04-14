@@ -40,6 +40,14 @@ class Main extends React.Component {
 
   componentDidMount() {
     document.querySelector('#root').classList.add('appMain');
+    let visited = localStorage["alreadyVisited"];
+        if(visited) {
+             this.setState({ help: false })
+        } else {
+             this.setState({ help: true});
+
+             localStorage["alreadyVisited"] = true;
+        }
   }
 
   initializeCamera = () => {
@@ -65,8 +73,14 @@ class Main extends React.Component {
     predictions.sort((a, b) =>
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
+    let mostLikely = `IT\'S ${predictions[0].label.toUpperCase()}`;
 
-    let mostLikely = predictions[0].label.toUpperCase();
+    console.log(predictions)
+
+    if(predictions[0].prob < 0.5) {
+      mostLikely = 'KERBIT\'S NOT SURE! :('
+    }
+
 
     if (
       mostLikely === 'CHAIR' ||
@@ -75,14 +89,14 @@ class Main extends React.Component {
       mostLikely === 'TABLE' ||
       mostLikely === 'BED'
     ) {
-      mostLikely = 'FURNITURE';
+      mostLikely = 'IT\'S FURNITURE';
     }
     if (
       mostLikely === 'MIRCOWAVE' ||
       mostLikely === 'KETTLE' ||
       mostLikely === 'TOASTER' 
     ) {
-      mostLikely = 'ELECTRICALS';
+      mostLikely = 'IT\'S ELECTRICALS';
     }
 
     this.setState({

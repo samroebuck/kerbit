@@ -11,6 +11,7 @@ import Photo from '../../images/photo.svg';
 import Recycle from '../../images/recycle.svg';
 
 const Help = props => {
+
   return (
     <>
       <div className={`help help--expanded${props.expandedHowTo}`}>
