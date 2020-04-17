@@ -12,9 +12,11 @@ const ExpandedControl = (props) => {
 
   let displayMap;
   if (
-    props.prediction === 'FURNITURE' ||
-    props.prediction === 'ELECTRICALS' ||
-    props.prediction === 'GLASS' ||
+    props.prediction === "IT'S FURNITURE" ||
+    props.prediction === "IT'S ELECTRICALS" ||
+    props.prediction === "IT'S GLASS" ||
+    props.prediction === "IT'S KITCHENWARES" ||
+    props.prediction === "IT'S COFFEE-CUPS" ||
     props.prediction === "KERBIT'S NOT SURE!"
   ) {
     displayMap = <MapContainer />;

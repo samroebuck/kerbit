@@ -7,8 +7,12 @@ import ShareButtton from '../../images/share.svg';
 
 const ControlButtonContainer = (props) => {
   let prediction = props.prediction.toLowerCase();
-  if (prediction === 'electicals') {
-    prediction = 'electrical';
+  let predictionCut = prediction.slice(5);
+  let predictionCutSearch;
+  if (predictionCut === 'electricals') {
+    predictionCutSearch = 'electrical'
+  } else {
+    predictionCutSearch = predictionCut
   }
 
   let buttons;
@@ -48,8 +52,8 @@ const ControlButtonContainer = (props) => {
       {
         id: 3,
         class: 'response__btn response__btn--bottomthird',
-        href: `https://www.leeds.gov.uk/residents/bins-and-recycling/a-to-z-of-reusing-recycling-and-waste-disposal?k=%27${props.prediction}%27`,
-        text: [`Find out more about recycling ${prediction}!`],
+        href: `https://www.leeds.gov.uk/residents/bins-and-recycling/a-to-z-of-reusing-recycling-and-waste-disposal?k=%27${predictionCutSearch}%27`,
+        text: [`Find out more about recycling ${predictionCut}!`],
       },
     ];
   }

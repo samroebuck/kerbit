@@ -6,11 +6,13 @@ import BinGreen from '../../images/binGreen.svg';
 const RecycleLocation = props => {
     let location;
     switch (props.prediction) {
-      case 'FURNITURE':
-      case 'GLASS':
-      case 'KITCHENWARES':
-      case 'FABRIC':
-      case 'COFFEE-CUPS':
+      case "IT'S FURNITURE":
+      case "IT'S GLASS":
+      case "IT'S KITCHENWARES":
+      case "IT'S FABRIC":
+      case "IT'S COFFEE-CUPS":
+      case "IT'S ELECTRICALS":
+
         location = (
           <>
             <img src={RecyclingCentre} alt='recycling centre icon'></img>
