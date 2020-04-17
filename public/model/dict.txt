@@ -1,3 +1,4 @@
+textiles
 mircowave
 toaster
 coffee-cups

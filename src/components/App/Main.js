@@ -78,7 +78,7 @@ class Main extends React.Component {
     console.log(predictions)
 
     if(predictions[0].prob < 0.5) {
-      mostLikely = 'KERBIT\'S NOT SURE! :('
+      mostLikely = 'KERBIT\'S NOT SURE!'
     }
 
 
