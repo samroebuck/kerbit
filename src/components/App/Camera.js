@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Camera extends Component {
+class Camera extends React.Component {
   componentDidMount() {
     const { initializeCamera } = this.props;
     initializeCamera();
@@ -20,7 +20,7 @@ class Camera extends Component {
     );
 
     return (
-        <main className="cameracontainer">{imageDisplay}</main>
+        <section className="cameracontainer">{imageDisplay}</section>
     );
   }
 }

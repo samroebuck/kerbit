@@ -1,23 +1,65 @@
+@font-face {
+  font-family: 'roboto slab';
+  font-display: auto;
+
+  src: local('roboto slab'),
+    url(../../fonts/RobotoSlab-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'brandon-grotesque';
+  font-display: auto;
+
+  src: local('brandon-grotesque'),
+    url(../../fonts/Brandon_reg.otf) format('opentype');
+}
+
 $primaryFont: 'roboto slab', sans-serif;
 $secondaryFont: 'brandon-grotesque', sans-serif;
 $baseFontSize: 18; // Default
 
-@mixin font-roboto-slab($size: false, $colour: false, $weight: false,  $lh: false) {
-    font-family: $primaryFont;
-    @if $size { font-size: $size; }
-    @if $colour { color: $colour; }
-    @if $weight { font-weight: $weight; }
-    @if $lh { line-height: $lh; }
+@mixin font-roboto-slab(
+  $size: false,
+  $colour: false,
+  $weight: false,
+  $lh: false
+) {
+  font-family: $primaryFont;
+  @if $size {
+    font-size: $size;
+  }
+  @if $colour {
+    color: $colour;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
 }
 
-@mixin font-brandon-grotesque($size: false, $colour: false, $weight: false,  $lh: false) {
-    font-family: $secondaryFont;
-    @if $size { font-size: $size; }
-    @if $colour { color: $colour; }
-    @if $weight { font-weight: $weight; }
-    @if $lh { line-height: $lh; }
+@mixin font-brandon-grotesque(
+  $size: false,
+  $colour: false,
+  $weight: false,
+  $lh: false
+) {
+  font-family: $secondaryFont;
+  @if $size {
+    font-size: $size;
+  }
+  @if $colour {
+    color: $colour;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
 }
 
 @function em($pixels, $context: $baseFontSize) {
-    @return #{$pixels/$context}em
-  }
+  @return #{$pixels/$context}em;
+}

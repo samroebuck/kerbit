@@ -1,0 +1,572 @@
+@import './base/_reset.scss';
+@import './base/_typography.scss';
+@import './base/_colours.scss';
+@import './base/_animation.scss';
+@import './base/_mediaqueries.scss';
+
+// root styling
+.appMain {
+  position: relative;
+  height: 100vh;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+// header
+
+.appbar {
+  background-color: $darkGreen;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+
+  button {
+    @extend .reset-Button;
+  }
+
+  &__logo {
+    width: 150px;
+    padding: 10px;
+  }
+}
+
+// header
+
+// camera
+
+.cameracontainer {
+  background-color: darken($color: $grey, $amount: 20%);
+  height: 100vh;
+  &__capturedimage {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    opacity: 0.7;
+    // margin-top: -20px;
+  }
+
+  &__cameravideo {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+
+    &--noheight {
+      height: 0px;
+    }
+  }
+}
+
+// camera
+
+// controlbar
+
+.controls {
+  background-color: $lightGreen;
+  border-radius: 60px 0px 60px 60px;
+  width: calc(93vw - 60px);
+  padding: 10px 30px 10px 30px;
+  height: 60px;
+  width: calc(100vw - 80px);
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  // justify-content: center;
+  box-shadow: -1px -3px 7px rgba(0, 0, 0, 0.2);
+
+  &.controls--expanded {
+    border-radius: 50px 0px 5px 5px;
+    height: auto;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding: 10px 10px 10px 10px;
+    width: calc(100vw - 50px);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    transition: height 300ms cubic-bezier(0, 0, 0.7, 1.61);
+
+    .controls__helpbtn {
+      margin-left: 13px;
+    }
+
+    .controls__flashbtn {
+      margin-right: 10px;
+    }
+  }
+
+  &__capturebtn {
+    @extend .reset-Button;
+    background-color: $white;
+    border-radius: 100%;
+    height: 56px;
+    width: 56px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    align-self: center;
+
+    &--disabled {
+      opacity: 0.4;
+    }
+  }
+
+  &__helpbtn {
+    border-radius: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    @extend .reset-Button;
+    img {
+      height: 35px;
+    }
+  }
+
+  &__flashbtn {
+    @extend .reset-Button;
+    border-radius: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.response {
+  margin: 10px 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  // grid-template-rows: repeat(8, 1fr);
+  // grid-template-rows: 50px repeat(2, 50px) repeat(4, 1fr) 55px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  width: 100%;
+
+  &__prediction {
+    grid-area: 1 / 1 / 2 / 6;
+    background-color: $white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    // box-shadow: 0px 2px 5px $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      @include font-brandon-grotesque(em(24), $grey, 500);
+    }
+  }
+
+  &__map {
+    grid-area: 4 / 1 / 8 / 6;
+    background-color: $white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px $grey;
+
+    .info {
+      &__title {
+        @include font-roboto-slab(em(16), $purple, 500);
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      &__type {
+        @include font-roboto-slab(em(14), #707070, 500);
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+
+      &__address {
+        @include font-roboto-slab(em(14), #707070, 500);
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+    }
+
+    .map__title {
+      @include font-roboto-slab(em(18), #707070, 500);
+      border-bottom: $pink 2px solid;
+      padding: 5px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__recyclable {
+    background-color: $purple;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px;
+    // box-shadow: 0px 2px 5px $grey;
+    grid-area: 2 / 1 / 4 / 4;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    line-height: 1.2;
+
+    p {
+      @include font-brandon-grotesque(em(25), $white, 500);
+      font-size: 6vw;
+    }
+
+    span {
+      @include font-brandon-grotesque(em(21.5), $white, bold);
+    }
+  }
+
+  &__location {
+    background-color: $white;
+    border-radius: 10px;
+    padding: 10px;
+    // box-shadow: 0px 2px 5px $grey;
+    grid-area: 2 / 4 / 4 / 6;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      margin-bottom: 5px;
+    }
+
+    p {
+      @include font-roboto-slab(em(18), #707070, 500);
+      text-align: center;
+    }
+  }
+
+  &__btn {
+    @extend .reset-Button;
+    background-color: $white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px $grey;
+
+    &--bottomfirst {
+      // grid-area: 8 / 2 / 8 / 1;
+      grid-column-start: 1;
+    }
+
+    &--bottomsecond {
+      // grid-area: 8 / 2 / 8 / 3;
+      grid-column-start: 2;
+    }
+
+    &--bottomthird {
+      // grid-area: 8 / 3 / 8 / 6;
+      grid-column-start: 3;
+      grid-column-end: 6;
+      background-color: $pink;
+      color: $white;
+      @include font-roboto-slab(em(16), $white, 500);
+      text-decoration: none;
+      text-align: center;
+
+      img {
+        width: 80px;
+        vertical-align: unset;
+      }
+    }
+  }
+}
+
+// controlbar
+
+// form
+
+.return {
+  @extend .reset-Button;
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 22px;
+
+  img {
+    height: 20px;
+  }
+}
+
+.contactpage {
+  background-color: $darkGreen;
+  padding-top: 10vh;
+  height: 90vh;
+  width: 100vw;
+
+  &__container {
+    background-color: $white;
+    width: calc(90vw - 40px);
+    margin-left: 5vw;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px $grey;
+  }
+
+  &__title {
+    background-color: $purple;
+    @include font-brandon-grotesque(em(16), $white, bold);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px $grey;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 1.1px;
+    margin-bottom: 20px;
+
+    img {
+      height: 12px;
+      margin: 0px 5px;
+      vertical-align: unset;
+    }
+
+    span {
+      @include font-brandon-grotesque(em(28), $white, regular);
+      display: block;
+    }
+  }
+}
+
+.form {
+  input,
+  textarea {
+    width: calc(100% - 20px);
+    background-color: $white;
+    border: unset;
+    // border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid rgba(166, 197, 189, 0.73);
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    height: 200px;
+
+    &:focus {
+      border: 1px solid $darkGreen;
+    }
+
+    &::placeholder {
+      @include font-brandon-grotesque(em(18), $lightGreen, 600);
+    }
+  }
+
+  input {
+    height: 40px;
+  }
+
+  label {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  &__btn {
+    @extend .reset-Button;
+    background-color: $pink;
+    border-radius: 10px;
+    padding: 10px;
+    @include font-roboto-slab(em(20), $pureWhite, 500);
+    margin: 0 auto;
+    display: block;
+    width: 50vw;
+  }
+}
+// help
+
+.help,
+.knows {
+  flex-basis: 100%;
+  background-color: $white;
+  border-radius: 10px;
+  padding: 20px 20px;
+  margin-top: 15px;
+  height: 18px;
+  overflow: hidden; // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+
+  &--expandedtrue {
+    height: auto;
+    overflow: auto;
+
+    button img:first-of-type {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__title {
+    @include font-brandon-grotesque(em(22), $purple, bold);
+    // flex-basis: 100%;
+    // margin-bottom: 5px;
+    width: 88%;
+    display: inline-block;
+  }
+
+  img {
+    // flex-basis: 20%;
+    margin-top: 20px;
+    margin-right: 15px;
+    width: 15%;
+    display: inline-block;
+  }
+
+  &__btn {
+    display: inline-block;
+    width: 10%;
+
+    .btn__image {
+      width: unset;
+      margin: unset;
+      display: unset;
+    }
+  }
+
+  p {
+    width: calc(85% - 15px);
+    display: inline-block;
+    margin-top: 20px;
+    @include font-roboto-slab(em(18), $grey, 500);
+    line-height: 1.3;
+    vertical-align: middle;
+  }
+}
+
+.knows img {
+  margin-right: unset;
+  margin-left: 15px;
+}
+
+// animation
+// variables
+$dashOffsetStart: 800;
+$dashOffsetEnd: 0;
+
+// animation mixins
+
+@include keyframes(loading) {
+  0% {
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    transform: scale(1) rotateZ(180deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+
+@include keyframes(stroke-draw) {
+  from {
+    stroke-dashoffset: $dashOffsetStart;
+    fill-opacity: 0;
+  }
+  65% {
+    fill-opacity: 1;
+  }
+
+  to {
+    stroke-dashoffset: $dashOffsetEnd;
+    fill-opacity: 1;
+  }
+}
+
+.loader {
+  position: absolute;
+  top: 40%;
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include animation(
+    loading,
+    2.3s,
+    3s,
+    infinite,
+    cubic-bezier(0.785, 0.135, 0.15, 0.86)
+  );
+
+  path {
+    stroke: $pink;
+    fill: $pink;
+    fill-opacity: 0;
+    stroke-width: 0.5;
+    stroke-dasharray: $dashOffsetStart;
+    stroke-dashoffset: $dashOffsetStart;
+    @include animation(stroke-draw, 0s, 3s, infinite, ease-in-out);
+  }
+}
+
+#arrow-bottom path {
+  animation-delay: 0.5s;
+}
+
+#arrow-side path {
+  animation-delay: 1s;
+}
+
+@media (orientation: landscape) {
+  .appbar {
+    display: none;
+  }
+
+  .controls {
+    transform: translateX(90%) rotate(-90deg);
+    width: calc(100vh - 80px);
+    /* right: 0px; */
+    /* top: 10px; */
+    transform-origin: left bottom;
+
+    &.controls--expanded {
+      transform: translateX(90%) rotate(-90deg);
+      width: calc(100vh - 40px);
+      /* right: 0px; */
+      /* top: 10px; */
+      transform-origin: left bottom;
+    }
+
+    &__flashbtn,
+    &__helpbtn {
+      transform: rotate(90deg);
+    }
+  }
+
+  .help,
+  .knows {
+    // transform: rotate(90deg);
+    // transform-origin: top right;
+    flex-basis: unset;
+
+    &.help--expandedtrue {
+      transform: rotate(90deg);
+    }
+
+    &.knows--expandedtrue {
+      transform: rotate(90deg);
+    }
+  }
+
+  .contactpage {
+    height: auto;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+  }
+
+  .cameracontainer__capturedimage {
+    margin-top: -15px;
+  }
+
+  .response {
+    transform-origin: top left;
+    transform: translateX(100%) rotate(90deg);
+  }
+}

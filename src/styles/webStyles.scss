@@ -1,0 +1,204 @@
+@import './base/_reset.scss';
+@import './base/_typography.scss';
+@import './base/_colours.scss';
+@import './base//mediaqueries';
+
+// main styles
+.webMain {
+  background: linear-gradient(0deg, $white 0%, $darkGreen 100%);
+  padding: 20px;
+  min-height: 90vh;
+
+  @include md {
+    padding: 20px 150px;
+  }
+
+  @include lg {
+    padding: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: linear-gradient(270deg, $white 0%, $darkGreen 100%);
+  }
+}
+
+.deviceImg {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  height: 500px;
+  z-index: 1;
+
+  @include lg {
+    margin: unset;
+    height: 85vh;
+  }
+}
+
+.title {
+  @include lg {
+    padding-top: 15px;
+    text-align: center;
+    width: 50vw;
+    max-width: 55vw;
+    align-self: center;
+    // margin-left: 20px;
+    // position: absolute;
+    // top: 30vh;
+    transform: translateX(-12.5vw);
+  }
+}
+.positioning {
+  @include lg {
+    width: 90vw;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin-top: -10vh;
+  }
+}
+
+.steps {
+  z-index: 0;
+  background-color: #f8f8f6;
+  padding: 20px;
+  border-radius: 20px;
+  padding-top: 150px;
+  margin-top: -150px;
+  box-shadow: 0px 2px 5px lighten($grey, 0.2);
+
+  @include lg {
+    // margin-top: -30vh;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50vw;
+    max-width: 55vw;
+    // margin-bottom: 40px;
+    align-self: center;
+    margin: unset;
+  }
+
+  h2 {
+    @include font-brandon-grotesque(em(35), $purple, 500);
+    flex: 0 0;
+    flex-basis: calc(100% - 40px);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__box {
+    height: 80px;
+    margin-bottom: 15px;
+    padding: 25px;
+    @include font-roboto-slab(em(20), $white, 400);
+    line-height: 1.6;
+
+    @include lg {
+      height: auto;
+    }
+
+    &--first {
+      border-top-left-radius: 20px;
+      background-color: $purple;
+      @include lg {
+        flex-basis: calc(50% - 45px);
+        margin-right: 10px;
+      }
+    }
+
+    &--second {
+      background-color: $lightGreen;
+      border-top-right-radius: 20px;
+      @include lg {
+        flex: 1 2;
+      }
+    }
+
+    &--third {
+      border-top-left-radius: 20px;
+      background-color: $darkGreen;
+      @include md {
+        flex-basis: calc(50% - 45px);
+        margin-right: 10px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 20px;
+      }
+    }
+
+    &--fourth {
+      border-top-right-radius: 20px;
+      background-color: $pink;
+      @include lg {
+        flex: 1 2;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 20px;
+      }
+    }
+
+    &--first,
+    &--third {
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        margin-right: 20px;
+      }
+    }
+
+    &--second,
+    &--fourth {
+      flex-direction: row-reverse;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      img {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 40px;
+
+  @include lg {
+    align-self: end;
+    flex-direction: column;
+    margin-top: -20vh;
+  }
+
+  &__icon {
+    background-color: $pink;
+    height: 60px;
+    width: 60px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    @include lg {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.download {
+  background-color: $purple;
+  display: block;
+  @include font-brandon-grotesque(em(30), $white, 400);
+  text-align: center;
+  align-self: center;
+  line-height: 1.4;
+  border-radius: 10px;
+  padding: 10px 30px;
+
+  @include lg {
+    margin-top: -20vh;
+    transform: translateX(-12.5vw);
+  }
+}

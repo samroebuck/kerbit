@@ -4,18 +4,18 @@
   "private": true,
   "dependencies": {
     "@tensorflow/tfjs-automl": "^1.0.0",
-    "@tensorflow/tfjs-converter": "^1.5.1",
+    "@tensorflow/tfjs-converter": "^1.7.0",
     "@tensorflow/tfjs-core": "^1.5.1",
-    "axios": "^0.19.1",
-    "grommet": "^2.9.0",
-    "grommet-icons": "^4.4.0",
+    "google-map-react": "^1.1.6",
     "node-sass": "^4.13.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-ios-pwa-prompt": "^1.6.0",
+    "react-loadable": "^5.5.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
     "react-webcam": "^4.0.0",
-    "serve": "^11.3.0",
-    "styled-components": "^5.0.0"
+    "serve": "^11.3.0"
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",
