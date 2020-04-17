@@ -26,7 +26,7 @@ const Help = props => {
         <img src={Photo} alt='find icon' />
         <p>Snap a clear photo of your item</p>
         <img src={Recycle} alt='find icon' />
-        <p>Kerbit will let you know if you can recycle it</p>
+        <p>Kerbit will let you know if you can recycle it in Leeds</p>
       </div>
     </>
   );
