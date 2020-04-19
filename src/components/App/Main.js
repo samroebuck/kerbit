@@ -73,7 +73,7 @@ class Main extends React.Component {
     predictions.sort((a, b) =>
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
-    let mostLikely = `IT\'S ${predictions[0].label.toUpperCase()}`;
+    let mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
 
     console.log(predictions)
 

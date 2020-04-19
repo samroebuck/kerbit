@@ -54,7 +54,9 @@ const ExpandedControl = (props) => {
 
   return (
     <section className='controls controls--expanded'>
+    <div className='buttoncontroller'>
       <CameraButtonContainer disabled={true}></CameraButtonContainer>
+      </div>
       {props.prediction === "KERBIT'S NOT SURE!"
         ? kerbitDoesntKnow
         : kerbitKnows}
