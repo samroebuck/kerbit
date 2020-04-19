@@ -23,7 +23,7 @@ class CollapseControl extends React.Component {
              localStorage["alreadyVisited"] = true;
         }
 
-        let screenWidth = window.screen.width
+        // let screenWidth = window.screen.width
   }
 
   handleAccordian = (e) => {
