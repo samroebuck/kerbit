@@ -1,8 +1,26 @@
+$screen-xxs-min: 350px; // extra small phone
 $screen-xs-min: 425px; // Tiny phones
 $screen-sm-min: 576px; // Small tablets and large smartphones (landscape view)
 $screen-md-min: 768px; // Small tablets (portrait view)
 $screen-lg-min: 1025px; // Tablets and small desktops
 $screen-xl-min: 1200px; // Large tablets and desktops
+
+@mixin sm-landscape {
+  @media (min-width: 580px) and (orientation: landscape) {
+    @content;
+  }
+}
+@mixin ls {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin xxs {
+  @media (min-width: #{$screen-xs-min}) {
+    @content;
+  }
+}
 
 @mixin xs {
   @media (min-width: #{$screen-xs-min}) {

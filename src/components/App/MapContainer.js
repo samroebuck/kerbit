@@ -298,7 +298,7 @@ class MapContainer extends React.Component {
     return (
       <div className='response__map'>
         <p className='map__title'>Your closest centre:</p>
-        <div style={{ height: '200px', width: '100%' }}>
+        <div  className='map__container' style={{  width: '100%' }}>
           <GoogleMapReact
             bootstrapURLKeys={{ key: `${key}` }}
             defaultCenter={this.props.center}

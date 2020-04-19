@@ -7,7 +7,7 @@ class CollapseControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expandedHowTo: false,
+      expandedHowTo: true,
       expandedKnows: false
     };
   }
@@ -22,6 +22,8 @@ class CollapseControl extends React.Component {
              this.setState({ expandedHowTo: false});
              localStorage["alreadyVisited"] = true;
         }
+
+        let screenWidth = window.screen.width
   }
 
   handleAccordian = (e) => {
@@ -29,13 +31,13 @@ class CollapseControl extends React.Component {
     if (element.classList.contains('help__btn')) {
       this.setState({
         expandedHowTo: !this.state.expandedHowTo,
-        expandedKnows: false
+        expandedKnows: window.screen.width > window.screen.height ? this.state.expandedHowTo : false
       })
     }
     if (element.classList.contains('knows__btn')) {
       this.setState({
         expandedKnows: !this.state.expandedKnows,
-        expandedHowTo: false
+        expandedHowTo: window.screen.width > window.screen.height ? this.state.expandedKnows : false
       })
     }
 
@@ -45,18 +47,21 @@ class CollapseControl extends React.Component {
     const { captureImage, disabledOnForm, displayHelp, help } = this.props;
 
     const control = help ? (
-      <section className='controls controls--expanded'>
+      <section className='controls controls--expanded controls--expandedls'>
+      <div className='buttoncontroller'>
         <CameraButtonContainer
           disabled={disabledOnForm}
           cameraClick={captureImage}
           displayHelp={displayHelp}
           help={help}
         ></CameraButtonContainer>
+        </div>
         <Help expandedHowTo={this.state.expandedHowTo} handleAccordian={this.handleAccordian}/>
         <KerbitKnows expandedKnows={this.state.expandedKnows} handleAccordian={this.handleAccordian}/>
       </section>
     ) : (
       <section className='controls'>
+      
         <CameraButtonContainer
           disabled={disabledOnForm}
           cameraClick={captureImage}
