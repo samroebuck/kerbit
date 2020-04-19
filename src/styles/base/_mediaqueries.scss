@@ -17,7 +17,7 @@ $screen-xl-min: 1200px; // Large tablets and desktops
 }
 
 @mixin xxs {
-  @media (min-width: #{$screen-xs-min}) {
+  @media (min-width: #{$screen-xxs-min}) {
     @content;
   }
 }

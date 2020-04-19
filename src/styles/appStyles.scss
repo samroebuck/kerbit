@@ -13,9 +13,15 @@
     font-size: 16px;
   }
 }
+
+body {
+  overflow: hidden;
+  // margin-top: 20px;
+}
 .appMain {
   position: relative;
   height: 100vh;
+  overflow: hidden;
 }
 
 button:disabled {
@@ -26,11 +32,12 @@ button:disabled {
 
 .appbar {
   background-color: $darkGreen;
-  height: 50px;
+  height: 100px;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  // position: absolute;
   z-index: 1;
   width: 100vw;
 
@@ -49,6 +56,7 @@ button:disabled {
   &__logo {
     width: 150px;
     padding: 10px;
+    margin-top: 40px;
   }
 }
 
@@ -90,7 +98,7 @@ button:disabled {
   height: 40px;
   width: calc(100vw - 80px);
   position: absolute;
-  bottom: 10px;
+  bottom: 60px;
   left: 50%;
   transform: translate(-50%, 0%);
   display: flex;
@@ -115,7 +123,7 @@ button:disabled {
   &.controls--expanded {
     border-radius: 50px 0px 5px 5px;
     height: auto;
-    bottom: 10px;
+    bottom: 60px;
     left: 50%;
     transform: translate(-50%, 0%);
     padding: 10px 10px 10px 10px;
@@ -509,6 +517,7 @@ button:disabled {
   &__btn {
     display: inline-block;
     width: 10%;
+    @extend .reset-Button;
 
     .btn__image {
       width: unset;
@@ -611,6 +620,7 @@ $dashOffsetEnd: 0;
     padding: 20px 10px 20px 10px;
     transform: unset;
     left: calc(100% - 95px);
+    bottom: 10px;
 
     &.controls--expanded {
       flex-direction: initial;
@@ -622,6 +632,7 @@ $dashOffsetEnd: 0;
       right: 1%;
       left: unset;
       flex-wrap: nowrap;
+      bottom: 10px;
 
       &.controls--expandedls {
         flex-wrap: wrap;
@@ -775,22 +786,4 @@ $dashOffsetEnd: 0;
       }
     }
   }
-
-  // .help,
-  // .knows {
-  //   // height: 100%;
-  //   // width: 30px;
-
-  //   &--expandedfalse {
-  //     // transform: rotate(-90deg);
-  //   }
-
-  //   &__title {
-  //     // height: 80%;
-  //     // writing-mode: vertical-rl;
-  //     // text-orientation: mixed;
-  //     // transform: rotate(180deg);
-  //     // height: 100%;
-  //   }
-  // }
 }
