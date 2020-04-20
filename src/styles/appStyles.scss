@@ -63,7 +63,10 @@ button:disabled {
   &__logo {
     width: 150px;
     padding: 10px;
-    margin-top: 40px;
+
+    @supports (-webkit-touch-callout: none) {
+      margin-top: 40px;
+    }
   }
 }
 
