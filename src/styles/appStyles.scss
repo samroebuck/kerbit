@@ -17,6 +17,8 @@
 body {
   overflow: hidden;
   // margin-top: 20px;
+  // padding: env(safe-area-inset-top) env(safe-area-inset-right)
+  //   env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 .appMain {
   position: relative;
@@ -32,7 +34,7 @@ button:disabled {
 
 .appbar {
   background-color: $darkGreen;
-  height: 100px;
+  height: 50px;
   position: fixed;
   display: flex;
   align-items: center;
@@ -46,6 +48,11 @@ button:disabled {
   }
 
   @include xxs {
+    @supports (-webkit-touch-callout: none) {
+      /* CSS specific to iOS devices */
+      height: 70px;
+      padding-bottom: 10px;
+    }
     height: 60px;
   }
 
@@ -98,7 +105,7 @@ button:disabled {
   height: 40px;
   width: calc(100vw - 80px);
   position: absolute;
-  bottom: 60px;
+  bottom: 10px;
   left: 50%;
   transform: translate(-50%, 0%);
   display: flex;
@@ -123,7 +130,7 @@ button:disabled {
   &.controls--expanded {
     border-radius: 50px 0px 5px 5px;
     height: auto;
-    bottom: 60px;
+    bottom: 10px;
     left: 50%;
     transform: translate(-50%, 0%);
     padding: 10px 10px 10px 10px;

@@ -77,24 +77,24 @@ class Main extends React.Component {
 
     console.log(predictions)
 
-    if(predictions[0].prob < 0.5) {
+    if(predictions[0].prob < 0.1) {
       mostLikely = 'KERBIT\'S NOT SURE!'
     }
 
 
     if (
-      mostLikely === 'CHAIR' ||
-      mostLikely === 'SWIVELCHAIR' ||
-      mostLikely === 'SOFA' ||
-      mostLikely === 'TABLE' ||
-      mostLikely === 'BED'
+      mostLikely === 'IT\'S CHAIR' ||
+      mostLikely === 'IT\'S SWIVELCHAIR' ||
+      mostLikely === 'IT\'S SOFA' ||
+      mostLikely === 'IT\'S TABLE' ||
+      mostLikely === 'IT\'S BED'
     ) {
       mostLikely = 'IT\'S FURNITURE';
     }
     if (
-      mostLikely === 'MIRCOWAVE' ||
-      mostLikely === 'KETTLE' ||
-      mostLikely === 'TOASTER' 
+      mostLikely === 'IT\'S MIRCOWAVE' ||
+      mostLikely === 'IT\'S KETTLE' ||
+      mostLikely === 'IT\'S TOASTER' 
     ) {
       mostLikely = 'IT\'S ELECTRICALS';
     }
