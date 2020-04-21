@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <g id="Backward_arrow" data-name="Backward arrow" transform="translate(-11)" style="isolation: isolate">
-    <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H0V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(27 16) rotate(180)" fill="#fff"/>
-  </g>
-</svg>
+<svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m8 0-1.455 1.455 5.506 5.506h-12.051v2.078h12.052l-5.507 5.506 1.455 1.455 8-8z" fill="#fff" transform="matrix(-1 0 0 -1 16 16)"/></svg>

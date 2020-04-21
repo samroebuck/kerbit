@@ -390,6 +390,10 @@ button:disabled {
   top: 20px;
   left: 22px;
 
+  @supports (-webkit-touch-callout: none) {
+    top: 35px;
+  }
+
   img {
     height: 20px;
   }
@@ -705,7 +709,7 @@ $dashOffsetEnd: 0;
         width: 100%;
 
         @include sm-landscape {
-          font-size: 4.5vw;
+          font-size: 4vw;
         }
       }
     }

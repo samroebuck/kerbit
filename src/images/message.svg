@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 30 30">
-  <path id="Icon_feather-message-circle" data-name="Icon feather-message-circle" d="M31.5,17.25a12.57,12.57,0,0,1-1.35,5.7A12.75,12.75,0,0,1,18.75,30a12.57,12.57,0,0,1-5.7-1.35L4.5,31.5l2.85-8.55A12.57,12.57,0,0,1,6,17.25a12.75,12.75,0,0,1,7.05-11.4,12.57,12.57,0,0,1,5.7-1.35h.75a12.72,12.72,0,0,1,12,12Z" transform="translate(-3 -3)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-</svg>
+<svg height="33" viewBox="0 0 30 30" width="33" xmlns="http://www.w3.org/2000/svg"><path d="m31.5 17.25a12.57 12.57 0 0 1 -1.35 5.7 12.75 12.75 0 0 1 -11.4 7.05 12.57 12.57 0 0 1 -5.7-1.35l-8.55 2.85 2.85-8.55a12.57 12.57 0 0 1 -1.35-5.7 12.75 12.75 0 0 1 7.05-11.4 12.57 12.57 0 0 1 5.7-1.35h.75a12.72 12.72 0 0 1 12 12z" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" transform="translate(-3 -3)"/></svg>
