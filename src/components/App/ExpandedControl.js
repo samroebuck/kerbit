@@ -22,46 +22,34 @@ const ExpandedControl = (props) => {
     displayMap = <MapContainer />;
   }
 
-  let kerbitKnows = (
-    <div className='response'>
-      <header className='response__prediction'>
-        <h2>{props.prediction}</h2>
-      </header>
-      <>{displayMap}</>
-      <Recyclable prediction={props.prediction} />
-      <RecycleLocation prediction={props.prediction} />
-      <ResponceButtonContaner
-        prediction={props.prediction}
-        restartClick={discardImage}
-        shareClick={sharePredication}
-      />
-    </div>
-  );
-
-  let kerbitDoesntKnow = (
-    <div className='response response--unknown'>
-      <header className='response__prediction'>
-        <h2>{props.prediction}</h2>
-      </header>
-      <>{displayMap}</>
-      <Recyclable prediction={props.prediction} />
-      <ResponceButtonContaner
-        prediction={props.prediction}
-        restartClick={discardImage}
-      />
-    </div>
-  );
-
   return (
-    // <section className='controls controls--expanded'>
     <>
-    <div className='buttoncontroller'>
-      <CameraButtonContainer disabled={true}></CameraButtonContainer>
+      <div className='buttoncontroller'>
+        <CameraButtonContainer disabled={true}></CameraButtonContainer>
       </div>
-      {props.prediction === "KERBIT'S NOT SURE!"
-        ? kerbitDoesntKnow
-        : kerbitKnows}
-    {/* // </section> */}
+      <div
+        className={`response ${
+          props.prediction === "KERBIT'S NOT SURE!" ? 'response--unknown' : ''
+        }`}
+      >
+        <header className='response__prediction'>
+          <h2>{props.prediction}</h2>
+        </header>
+        <>{displayMap}</>
+        <Recyclable prediction={props.prediction} />
+        {props.prediction !== "KERBIT'S NOT SURE!" ? (
+          <RecycleLocation prediction={props.prediction} />
+        ) : (
+          ''
+        )}
+        <ResponceButtonContaner
+          prediction={props.prediction}
+          restartClick={discardImage}
+          shareClick={` ${
+          props.prediction !== "KERBIT'S NOT SURE!" ? sharePredication : ''
+        }`}
+        />
+      </div>
     </>
   );
 };

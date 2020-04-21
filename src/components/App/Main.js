@@ -137,10 +137,8 @@ class Main extends React.Component {
     
       try {
         await navigator.share(shareData)
-        console.log('shared successfully');
       } catch(err) {
         console.log('Error');
-
       }
  
   }

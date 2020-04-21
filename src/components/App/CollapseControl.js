@@ -50,11 +50,6 @@ class CollapseControl extends React.Component {
     const { captureImage, disabledOnForm, displayHelp, help } = this.props;
 
     return (
-      // <section
-      //   className={`controls ${
-      //     help ? 'controls--expanded controls--expandedls' : ''
-      //   }`}
-      // >
       <>
       <div className='buttoncontroller'>
         <CameraButtonContainer
@@ -75,7 +70,6 @@ class CollapseControl extends React.Component {
             />
           </> : ''}
           </>
-      // </section>
     );
   }
 }

@@ -6,6 +6,7 @@ import {
 import BackArrow from '../../images/backArrow.svg'
 import AppBar from './AppBar';
 
+
 const Contact = props => {
   return (
     <>
@@ -19,7 +20,7 @@ const Contact = props => {
             <span>LET US KNOW!</span>
             
           </h3>
-          <form name='kerbit-wrong' netlify='true' className='form'>
+          <form name='kerbit-wrong' netlify='true' className='form' method="post">
             <input type='hidden' name='form-name' value='kerbit-wrong' />
 
             <label htmlFor='name' className='form__label'>
@@ -46,7 +47,7 @@ const Contact = props => {
             />
 
             <label htmlFor='message' className='form__extralabel'>
-              What's the problem
+              What can we do for you?
             </label>
             <textarea
               className='form__extrainfo'
