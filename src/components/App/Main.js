@@ -124,6 +124,7 @@ class Main extends React.Component {
       prediction: '',
       help: false
     });
+
   };
 
   sharePredication = async () => {
