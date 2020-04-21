@@ -103,10 +103,10 @@ button:disabled {
 .controls {
   background-color: $lightGreen;
   border-radius: 60px 0px 60px 60px;
-  width: calc(93vw - 60px);
-  padding: 10px 30px 10px 30px;
-  height: 40px;
-  width: calc(100vw - 80px);
+  padding: 10px 10px 10px 10px;
+  // height: 40px;
+  max-height: 40px;
+  width: calc(100vw - 40px);
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -117,9 +117,12 @@ button:disabled {
   align-items: center;
   // justify-content: center;
   box-shadow: -1px -3px 7px rgba(0, 0, 0, 0.2);
+  transition: max-height 0.3s ease-in, border-radius 150ms ease-in;
+  overflow: hidden;
 
   @include xxs {
-    height: 60px;
+    // height: 60px;
+    max-height: 60px;
   }
 
   .buttoncontroller {
@@ -128,28 +131,22 @@ button:disabled {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 0px 20px 0px 20px;
   }
 
   &.controls--expanded {
-    border-radius: 50px 0px 5px 5px;
+    border-radius: 45px 0px 5px 5px;
     height: auto;
+    max-height: 999px;
     bottom: 10px;
     left: 50%;
     transform: translate(-50%, 0%);
-    padding: 10px 10px 10px 10px;
-    width: calc(100vw - 50px);
+    // padding: 10px 10px 10px 10px;
+    // width: calc(100vw - 40px);
     flex-wrap: wrap;
-    justify-content: space-between;
-    transition: height 300ms cubic-bezier(0, 0, 0.7, 1.61);
+    // justify-content: space-between;
     z-index: 3;
-
-    .controls__helpbtn {
-      margin-left: 13px;
-    }
-
-    .controls__flashbtn {
-      margin-right: 10px;
-    }
+    transition: max-height 0.3s ease-in, border-radius 150ms ease-in;
   }
 
   &__capturebtn {
@@ -495,12 +492,15 @@ button:disabled {
   padding: 20px 20px;
   margin-top: 15px;
   height: 18px;
+  max-height: 20px;
   overflow: hidden; // display: flex;
   // flex-direction: row;
   // flex-wrap: wrap;
+  transition: max-height 1s ease-out;
 
   &--expandedtrue {
     height: auto;
+    max-height: 100vh;
     overflow: auto;
 
     button img:first-of-type {
