@@ -4,6 +4,7 @@
 
   src: local('roboto slab'),
     url(../../fonts/RobotoSlab-Regular.ttf) format('truetype');
+  font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
 
   src: local('brandon-grotesque'),
     url(../../fonts/Brandon_reg.otf) format('opentype');
+  font-display: swap;
 }
 
 $primaryFont: 'roboto slab', sans-serif;
