@@ -93,7 +93,7 @@
     height: 80px;
     margin-bottom: 15px;
     padding: 25px;
-    @include font-roboto-slab(em(20), $white, 400);
+    @include font-roboto-slab(em(20), $pureWhite, 400);
     line-height: 1.6;
 
     @include lg {
@@ -199,7 +199,7 @@
   padding: 10px 30px;
 
   @include lg {
-    margin-top: -20vh;
+    margin-top: -10vh;
     transform: translateX(-12.5vw);
   }
 }

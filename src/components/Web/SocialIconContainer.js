@@ -2,7 +2,6 @@ import React from 'react'
 //components
 import SocialIcon from './SocialIcon'
 //images
-import facebook from '../../images/facebook.svg';
 import insta from '../../images/insta.svg';
 import twitter from '../../images/twitter.svg';
 
@@ -26,9 +25,8 @@ const SocialIconContainer = (props) => {
 };
 
 const socials = [
-    {id: 1, image: twitter, alt: 'Twitter icon', link: 'https://www.twitter.com/'},
-    {id: 2, image: facebook, alt: 'Facebook icon', link: 'https://www.facebook.com/'},
-    {id: 3, image: insta, alt: 'Instagram icon',  link: 'https://www.instagram.com/'},
+    {id: 1, image: twitter, alt: 'Twitter icon', link: 'https://twitter.com/KerbitApp'},
+    {id: 3, image: insta, alt: 'Instagram icon',  link: 'https://www.instagram.com/kerbitapp/'},
 
 ];
 
