@@ -9,7 +9,7 @@ const RecycleLocation = props => {
       case "IT'S FURNITURE":
       case "IT'S GLASS":
       case "IT'S KITCHENWARES":
-      case "IT'S FABRIC":
+      case "IT'S TEXTILES":
       case "IT'S COFFEE-CUPS":
       case "IT'S ELECTRICALS":
 

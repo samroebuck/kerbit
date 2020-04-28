@@ -627,6 +627,7 @@ $dashOffsetEnd: 0;
 
 @media (orientation: landscape) {
   .controls {
+    max-height: unset;
     width: 60px;
     height: calc(100vh - 60px);
     flex-direction: column-reverse;

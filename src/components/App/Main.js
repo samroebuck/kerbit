@@ -20,7 +20,7 @@ const Loading = () => <h1>Loading...</h1>; // loading component
 
 const LoadSpinner = Loadable({
   loader: () => import('./LoadingSpinner'),
-  loading: Loading
+  loading: Loading,
 });
 
 // component
@@ -40,14 +40,14 @@ class Main extends React.Component {
 
   componentDidMount() {
     document.querySelector('#root').classList.add('appMain');
-    let visited = localStorage["alreadyVisited"];
-        if(visited) {
-             this.setState({ help: false })
-        } else {
-             this.setState({ help: true});
+    let visited = localStorage['alreadyVisited'];
+    if (visited) {
+      this.setState({ help: false });
+    } else {
+      this.setState({ help: true });
 
-             localStorage["alreadyVisited"] = true;
-        }
+      localStorage['alreadyVisited'] = true;
+    }
   }
 
   initializeCamera = () => {
@@ -75,44 +75,49 @@ class Main extends React.Component {
     );
     let mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
 
-    console.log(predictions)
+    console.log(predictions);
 
-    if(predictions[0].prob < 0.1) {
-      mostLikely = 'KERBIT\'S NOT SURE!'
+    if (predictions[0].prob < 0.1) {
+      mostLikely = "KERBIT'S NOT SURE!";
     }
 
-
-    if (
-      mostLikely === 'IT\'S CHAIR' ||
-      mostLikely === 'IT\'S SWIVELCHAIR' ||
-      mostLikely === 'IT\'S SOFA' ||
-      mostLikely === 'IT\'S TABLE' ||
-      mostLikely === 'IT\'S BED'
-    ) {
-      mostLikely = 'IT\'S FURNITURE';
-    }
-    if (
-      mostLikely === 'IT\'S MIRCOWAVE' ||
-      mostLikely === 'IT\'S KETTLE' ||
-      mostLikely === 'IT\'S TOASTER' 
-    ) {
-      mostLikely = 'IT\'S ELECTRICALS';
+    switch (mostLikely) {
+      case "IT'S CHAIR":
+      case "IT'S SWIVELCHAIR":
+      case "IT'S SOFA":
+      case "IT'S TABLE":
+      case "IT'S BED":
+        mostLikely = "IT'S FURNITURE";
+        break;
+      case "IT'S MIRCOWAVE":
+      case "IT'S KETTLE":
+      case "IT'S TOASTER":
+        mostLikely = "IT'S ELECTRICALS";
+        break;
+      case "IT'S CROCKERY":
+      case "IT'S CUPS":
+      case "IT'S CUTLERY":
+      case "IT'S PANS":
+        mostLikely = "IT'S KITCHENWARES";
+        break;
+      default:
+        mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;;
     }
 
     this.setState({
-      prediction: mostLikely
+      prediction: mostLikely,
     });
   };
 
   captureImage = async () => {
     const capturedData = this.webcam.takeBase64Photo({
       type: 'jpeg',
-      quality: 0.8
+      quality: 0.8,
     });
 
     this.setState({
       captured: true,
-      capturedImage: capturedData.base64
+      capturedImage: capturedData.base64,
     });
     this.runModel();
   };
@@ -122,9 +127,8 @@ class Main extends React.Component {
       captured: false,
       capturedImage: null,
       prediction: '',
-      help: false
+      help: false,
     });
-
   };
 
   sharePredication = async () => {
@@ -133,23 +137,21 @@ class Main extends React.Component {
       title: `Kerbit`,
       text: `I just recycled some ${predict}s with Kerbit! You can too!`,
       url: 'https://kerbit.app/',
+    };
+
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      console.log('Error');
     }
-    
-      try {
-        await navigator.share(shareData)
-      } catch(err) {
-        console.log('Error');
-      }
- 
-  }
+  };
 
   displayHelp = () => {
     this.setState({
-      help: !this.state.help
+      help: !this.state.help,
     });
-    }
+  };
 
-  
   render() {
     const { captured, prediction } = this.state;
     return (
@@ -161,7 +163,7 @@ class Main extends React.Component {
           captured={this.state.captured}
         />
         {captured && !prediction ? <LoadSpinner /> : <></>}
-        
+
         <ControlBar
           captureImage={this.captureImage}
           prediction={this.state.prediction}
