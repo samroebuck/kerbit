@@ -627,6 +627,7 @@ $dashOffsetEnd: 0;
 
 @media (orientation: landscape) {
   .controls {
+    justify-content: center;
     max-height: unset;
     width: 60px;
     height: calc(100vh - 60px);
@@ -636,6 +637,25 @@ $dashOffsetEnd: 0;
     transform: unset;
     left: calc(100% - 95px);
     bottom: 10px;
+
+    .buttoncontroller {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      // flex-direction: column-reverse;
+      height: 100%;
+      width: 60px;
+      padding: 0px 20px 0px 0px;
+
+      .controls__helpbtn {
+        align-self: end;
+      }
+
+      .controls__flashbtn {
+        align-self: flex-end;
+      }
+    }
 
     &.controls--expanded {
       flex-direction: initial;
@@ -651,7 +671,7 @@ $dashOffsetEnd: 0;
 
       &.controls--expandedls {
         flex-wrap: wrap;
-        flex-direction: column;
+        // flex-direction: column;
       }
 
       .controls__capturebtn {
@@ -661,11 +681,20 @@ $dashOffsetEnd: 0;
       .buttoncontroller {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        flex-direction: column-reverse;
+        // flex-direction: column-reverse;
         height: 100%;
         width: 60px;
+        padding: 0px 0px 0px 0px;
+
+        .controls__helpbtn {
+          align-self: end;
+        }
+
+        .controls__flashbtn {
+          align-self: flex-end;
+        }
 
         button {
           margin: 0px;
