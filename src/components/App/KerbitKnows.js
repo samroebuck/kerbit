@@ -15,7 +15,6 @@ import Question from '../../images/question.svg'
 
 const KerbitKnows = props => {
 
-
   return (
     <>
     <div className={`knows knows--expanded${props.expandedKnows}`}>
@@ -28,7 +27,7 @@ const KerbitKnows = props => {
       <p>Furniture and small kitchen applicances.</p>
 
       <img src={Chair} alt='find icon' />
-      <p>Some homewares and kitchenwares, like tupperware.</p>
+      <p>Kitchenwares, such as pans and crockery.</p>
 
       <img src={Home} alt='find icon' />
       <p>Want something adding to Kerbit? Send us a message and let us know!</p>

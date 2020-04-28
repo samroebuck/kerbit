@@ -1,9 +1,12 @@
 textiles
-mircowave
 toaster
 coffee-cups
 kettle
-kitchenwares
+microwave
+cups
+cutlery
+crockery
+pans
 metal
 plastic-bag
 glass
