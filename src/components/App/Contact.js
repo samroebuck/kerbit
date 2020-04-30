@@ -90,7 +90,7 @@ class Contact extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch('/Contact', {
+    fetch('https://kerbit.app/Contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
