@@ -16,11 +16,11 @@ export default function App() {
         <Route path='/Contact'>
           <Contact />
         </Route>
+        <Route path='/FormSuccess'>
+          <FormSuccess />
+        </Route>
         <Route path=''>
           <Main />
-        </Route>
-        <Route path='/Success'>
-          <FormSuccess />
         </Route>
       </Switch>
     </Router>

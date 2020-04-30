@@ -12,7 +12,7 @@ const Contact = props => {
   return (
     <>
       <AppBar></AppBar>
-      <Link to=''className='return'><img src={BackArrow} alt='back arrow'/></Link>
+      <Link to='' className='return'><img src={BackArrow} alt='back arrow'/></Link>
       <section className='contactpage'>
         <div className='contactpage__container'>
           <h3 className='contactpage__title'>
@@ -21,7 +21,7 @@ const Contact = props => {
             <span>LET US KNOW!</span>
             
           </h3>
-          <form name='kerbit-wrong' netlify='true' className='form' action='/Success' method='POST'>
+          <form name='kerbit-wrong' netlify='true' className='form' action='/FormSuccess' method='POST'>
             <input type='hidden' name='form-name' value='kerbit-wrong' />
 
             <label htmlFor='name' className='form__label'>
