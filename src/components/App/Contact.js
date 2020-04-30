@@ -8,6 +8,13 @@ import AppBar from './AppBar';
 
 
 const Contact = props => {
+
+const formSubmit = (e) => {
+  console.log('submiit')
+  e.preventDefault();
+  document.querySelector('.success').classList.add('show')
+}
+
   return (
     <>
       <AppBar></AppBar>
@@ -20,7 +27,7 @@ const Contact = props => {
             <span>LET US KNOW!</span>
             
           </h3>
-          <form name='kerbit-wrong' netlify='true' className='form' action='/Success' method='POST'>
+          <form name='kerbit-wrong' netlify='true' className='form' action='/thank-you' method='POST'>
             <input type='hidden' name='form-name' value='kerbit-wrong' />
 
             <label htmlFor='name' className='form__label'>
@@ -56,10 +63,11 @@ const Contact = props => {
               placeholder="What's the problem?"
             ></textarea>
 
-            <button className='form__btn' type='submit'>
+            <button className='form__btn' type='submit' onSubmit={formSubmit}>
               Send
             </button>
           </form>
+          <div id='success' className='success'>Form Submitted</div>
         </div>
       </section>
     </>
