@@ -288,10 +288,16 @@ button:disabled {
     p {
       @include font-brandon-grotesque(em(25), $white, 500);
       font-size: 6vw;
+      width: 100%;
+      display: block;
+      text-align: center;
     }
 
     span {
-      @include font-brandon-grotesque(em(21.5), $white, bold);
+      @include font-brandon-grotesque(em(19), $white, bold);
+      text-align: center;
+      width: 100%;
+      // display: block;
     }
   }
 
