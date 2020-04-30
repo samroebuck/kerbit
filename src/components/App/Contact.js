@@ -60,14 +60,14 @@ const Contact = () => {
             <span>LET US KNOW!</span>
             
           </h3>
-          <form name='kerbit-wrong' netlify='true' className='form' method='POST' onSubmit={e => onSubmit(e, setSubmitText)}>
+          <form name='contact' netlify='true' className='form' method='POST' onSubmit={e => onSubmit(e, setSubmitText)}>
           <p style={{ display: "none" }}>
           <label>
             Don’t fill this out if you expect to hear from us!
             <input name="bot-field" value="" readOnly />
           </label>
         </p>
-            <input type='hidden' name='form-name' value='kerbit-wrong' />
+            <input type='hidden' name='form-name' value='contact' />
 
             <label htmlFor='name' className='form__label'>
             Name
