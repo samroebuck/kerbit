@@ -20,7 +20,7 @@ const Contact = props => {
             <span>LET US KNOW!</span>
             
           </h3>
-          <form name='kerbit-wrong' netlify='true' className='form' method="post">
+          <form name='kerbit-wrong' netlify='true' className='form' action='thank-you' method='POST'>
             <input type='hidden' name='form-name' value='kerbit-wrong' />
 
             <label htmlFor='name' className='form__label'>

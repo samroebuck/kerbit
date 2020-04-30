@@ -11,6 +11,8 @@ const ControlButtonContainer = (props) => {
   let predictionCutSearch;
   if (predictionCut === 'electricals') {
     predictionCutSearch = 'electrical'
+  } else if (predictionCut === 'kitchenwares') {
+    predictionCutSearch = 'crockery'
   } else {
     predictionCutSearch = predictionCut
   }

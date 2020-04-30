@@ -89,7 +89,7 @@ class Main extends React.Component {
       case "IT'S BED":
         mostLikely = "IT'S FURNITURE";
         break;
-      case "IT'S MIRCOWAVE":
+      case "IT'S MICROWAVE":
       case "IT'S KETTLE":
       case "IT'S TOASTER":
         mostLikely = "IT'S ELECTRICALS";
