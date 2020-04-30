@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Main from './components/App/Main';
 import Contact from './components/App/Contact';
-import FormSuccess from './components/App/FormSuccess';
 
 export default function App() {
 
@@ -15,9 +14,6 @@ export default function App() {
       <Switch>
         <Route path='/Contact'>
           <Contact />
-        </Route>
-        <Route path='/FormSuccess'>
-          <FormSuccess />
         </Route>
         <Route path=''>
           <Main />
