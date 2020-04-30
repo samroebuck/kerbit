@@ -21,7 +21,7 @@ const Contact = () => {
   }
 
   const handleSubmit = e => {
-    const data = { "form-name": "contact", name, email, message}
+    const data = { "form-name": "kerbit-wrong", name, email, message}
     
     fetch("/", {
       method: "POST",
