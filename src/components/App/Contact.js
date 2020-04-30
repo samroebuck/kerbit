@@ -63,7 +63,7 @@ const Contact = () => {
             name='kerbit-wrong'
             netlify='true'
             className='form'
-            action='/FormSuccess'
+            action='/thank-you/'
             method='POST'
             onSubmit={handleSubmit}
           >
