@@ -23,14 +23,14 @@ const ControlButtonContainer = props => {
           image: CameraButton,
           alt: 'camera shutter button',
           class: 'controls__capturebtn',
-          click: props.cameraClick
+          click: props.cameraClick,
+          disabled: props.disabled
         },
         {
           id: 3,
           image: FlashButton,
           alt: 'message button',
           class: 'controls__flashbtn',
-          // click: props.showForm
           path: '/Contact'
         }
       ];
@@ -42,7 +42,7 @@ const ControlButtonContainer = props => {
       image={button.image}
       alt={button.alt}
       click={button.click}
-      disabled={props.disabled}
+      disabled={button.disabled}
       class={button.class}
       path={button.path}
     />

@@ -35,6 +35,7 @@ class Main extends React.Component {
       prediction: '',
       wrong: false,
       help: false,
+      cameraAccess: ''
     };
   }
 
@@ -51,18 +52,21 @@ class Main extends React.Component {
   }
 
   initializeCamera = () => {
-    // initialize the camera
     this.canvasElement = document.createElement('canvas');
+    this.access = this.state.cameraAccess
     this.webcam = new Webcam(
       document.querySelector('.cameracontainer__cameravideo'),
-      this.canvasElement
+      this.canvasElement,
+      this.access,
     );
+
     this.webcam.setup().catch(() => {
-      alert(
-        'Error getting access to your camera, open browser in a standalone window'
-      );
+      this.setState({
+        cameraAccess: 'Unable to access your camera! Please approve access to use Kerbit!',
+        wrong: true,
     });
-  };
+  });
+}
 
   runModel = async () => {
     const modelurl = process.env.PUBLIC_URL + '/model/model.json';
@@ -74,8 +78,6 @@ class Main extends React.Component {
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
     let mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
-
-    console.log(predictions);
 
     if (predictions[0].prob < 0.1) {
       mostLikely = "KERBIT'S NOT SURE!";
@@ -101,7 +103,7 @@ class Main extends React.Component {
         mostLikely = "IT'S KITCHENWARES";
         break;
       default:
-        mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;;
+        mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
     }
 
     this.setState({
@@ -153,7 +155,7 @@ class Main extends React.Component {
   };
 
   render() {
-    const { captured, prediction } = this.state;
+    const { captured, prediction, cameraAccess } = this.state;
     return (
       <>
         <AppBar discardImage={this.discardImage}></AppBar>
@@ -163,7 +165,7 @@ class Main extends React.Component {
           captured={this.state.captured}
         />
         {captured && !prediction ? <LoadSpinner /> : <></>}
-
+        <p className='cameraerror'>{cameraAccess}</p>
         <ControlBar
           captureImage={this.captureImage}
           prediction={this.state.prediction}

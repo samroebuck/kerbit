@@ -14,7 +14,6 @@ class CollapseControl extends React.Component {
 
   componentDidMount() {
     let visited = localStorage['alreadyVisited'];
-    console.log(visited);
     if (visited) {
       this.setState({ expandedHowTo: true });
     } else {
@@ -53,6 +52,7 @@ class CollapseControl extends React.Component {
       <>
       <div className='buttoncontroller'>
         <CameraButtonContainer
+
           disabled={disabledOnForm}
           cameraClick={captureImage}
           displayHelp={displayHelp}

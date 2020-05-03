@@ -30,6 +30,20 @@ button:disabled {
   opacity: 0.6;
 }
 
+.cameraerror {
+  position: absolute;
+  top: 40%;
+  height: 20vh;
+  width: 90%;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include font-brandon-grotesque(em(30), $white, 500);
+  text-align: center;
+  line-height: 1.3;
+}
+
 // header
 
 .appbar {
