@@ -13,7 +13,8 @@ const encode = (data) => {
 class Contact extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', email: '', message: '' };
+    this.state = { name: '', email: '', message: '', submitted: false };
+    
   }
 
 
@@ -24,14 +25,27 @@ class Contact extends React.Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
     })
-      .then(() => alert('Success!'))
-      .catch((error) => alert(error));
+      .then(() => { 
+        this.setState({submitted: true, name: '', email: '', message: ''})
+      })
+      .catch((error) => {
+        document.querySelector('.form').reset();
+        this.setState({submitted: null, name: '', email: '', message: ''})
+      });
   };
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     const { name, email, message } = this.state;
+
+    let formResponce = '';
+
+    if(this.state.submitted === true) {
+      formResponce = 'Thanks for the message! We\'ll get back to you soon! :)'
+    } else if (this.state.submitted === null) {
+      formResponce = 'Unable to send the form! Please try again later :('
+    }
     return (
       <>
         <AppBar></AppBar>
@@ -87,6 +101,10 @@ class Contact extends React.Component {
                 Send
               </button>
             </form>
+            <br></br>
+            <p className={`contactpage__response${
+         this.state.submitted !== false ? '--active' : ''
+        }`}>{formResponce}</p>
           </div>
         </section>
       </>

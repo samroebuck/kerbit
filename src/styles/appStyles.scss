@@ -430,17 +430,27 @@ button:disabled {
     line-height: 1.4;
     letter-spacing: 1.1px;
     margin-bottom: 20px;
+  }
 
-    img {
-      height: 12px;
-      margin: 0px 5px;
-      vertical-align: unset;
-    }
+  &__response {
+    display: none;
 
-    span {
-      @include font-brandon-grotesque(em(28), $white, regular);
+    &--active {
       display: block;
+      @include font-brandon-grotesque(em(20), $purple, regular);
+      text-align: center;
     }
+  }
+
+  img {
+    height: 12px;
+    margin: 0px 5px;
+    vertical-align: unset;
+  }
+
+  span {
+    @include font-brandon-grotesque(em(28), $white, regular);
+    display: block;
   }
 }
 
