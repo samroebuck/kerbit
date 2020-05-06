@@ -12,8 +12,11 @@ import app from './images/mockup-forweb.svg';
 class Web extends React.Component {
   componentDidMount() {
     document.querySelector('#root').classList.add('webMain');
+    // let isiOS13 = /OS 1([3-9])_([4-9])/.test(window.navigator.userAgent);
   }
   render() {
+    let isiOS13 = /OS 1([3-9])_([4-9])/.test(window.navigator.userAgent);
+
     return (
       <>
         <img src={logo} alt='Kerbit Logo' className='title'></img>
@@ -23,10 +26,11 @@ class Web extends React.Component {
         </div>
         <SocialIconContainer>{this.props.children}</SocialIconContainer>
         <div className='download'> <p>DOWNLOAD ON A SUPPORTED <br/> MOBILE DEVICE</p> </div>
-        <PWAPrompt 
+        {isiOS13 ? <PWAPrompt 
             delay={2000}
             timesToShow={3}
-        />
+        /> : <></>}
+        
       </>
     );
   }
