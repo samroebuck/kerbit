@@ -14,20 +14,14 @@
   }
 }
 
-body {
-  overflow: hidden;
-  // margin-top: 20px;
-  // padding: env(safe-area-inset-top) env(safe-area-inset-right)
-  //   env(safe-area-inset-bottom) env(safe-area-inset-left);
-}
 .appMain {
   position: relative;
   height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.2;
 }
 
 .cameraerror {
@@ -405,7 +399,7 @@ button:disabled {
 
 .return {
   @extend .reset-Button;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   top: 20px;
   left: 22px;
@@ -422,8 +416,9 @@ button:disabled {
 .contactpage {
   background-color: $darkGreen;
   padding-top: 10vh;
-  height: 90vh;
+  min-height: 100vh;
   width: 100vw;
+  padding-bottom: 20px;
 
   &__container {
     background-color: $white;
@@ -678,6 +673,7 @@ $dashOffsetEnd: 0;
     transform: unset;
     left: calc(100% - 95px);
     bottom: 10px;
+    transition: unset;
 
     .buttoncontroller {
       display: flex;
@@ -709,10 +705,11 @@ $dashOffsetEnd: 0;
       left: unset;
       flex-wrap: nowrap;
       bottom: 10px;
+      transition: unset;
 
       &.controls--expandedls {
-        // flex-wrap: wrap;
-        // flex-direction: column;
+        flex-wrap: wrap;
+        flex-direction: column;
       }
 
       .controls__capturebtn {
@@ -731,6 +728,7 @@ $dashOffsetEnd: 0;
 
         .controls__helpbtn {
           align-self: end;
+          transform: rotate(-90deg);
         }
 
         .controls__flashbtn {
@@ -821,6 +819,11 @@ $dashOffsetEnd: 0;
       @include sm-landscape {
         grid-column-end: 38;
       }
+
+      .map__container {
+        height: 250px;
+        // text-shadow: 0 0 black;
+      }
     }
 
     &.response--unknown {
@@ -846,28 +849,44 @@ $dashOffsetEnd: 0;
     // align-self: flex-end;
     margin-top: 0px;
     // height: 1px;
+    transition: unset;
 
     &__btn {
       width: 12%;
     }
 
-    img {
-      width: 7%;
-      // margin-top: 20px;
-    }
-
-    // &.help__step {
+    // img {
     //   width: 7%;
     //   // margin-top: 20px;
     // }
 
+    .help__step {
+      width: 7%;
+      // margin-top: 5px;
+
+      // margin-top: 20px;
+    }
+
     p {
       width: calc(93% - 15px);
+      // margin-top: 5px;
     }
 
     &--expandedtrue {
       height: calc(100% - 110px);
       overflow: auto;
+
+      .help__step {
+        width: 7%;
+        margin-top: 5px;
+
+        // margin-top: 20px;
+      }
+
+      p {
+        width: calc(93% - 15px);
+        // margin-top: 5px;
+      }
 
       img {
         width: 7%;

@@ -78,10 +78,8 @@ class Main extends React.Component {
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
     let mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
-
-    if (predictions[0].prob < 0.1) {
-      mostLikely = "KERBIT'S NOT SURE!";
-    }
+    console.log(predictions)   
+    console.log(mostLikely + ' before switch')     
 
     switch (mostLikely) {
       case "IT'S CHAIR":
@@ -104,6 +102,11 @@ class Main extends React.Component {
         break;
       default:
         mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
+    }
+    console.log(mostLikely + ' after switch')     
+
+    if (predictions[0].prob < 0.4) {
+      mostLikely = "KERBIT'S NOT SURE!";
     }
 
     this.setState({
@@ -151,6 +154,7 @@ class Main extends React.Component {
   displayHelp = () => {
     this.setState({
       help: !this.state.help,
+      wrong: !this.state.wrong,
     });
   };
 
