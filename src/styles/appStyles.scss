@@ -558,6 +558,17 @@ button:disabled {
     display: inline-block;
   }
 
+  .help__step {
+    width: 15%;
+    margin-top: 20px;
+    margin-right: 15px;
+    width: 10%;
+    display: inline-block;
+    text-align: center;
+    @include font-brandon-grotesque(em(35), $pink, bold);
+    // margin-top: 20px;
+  }
+
   &__btn {
     display: inline-block;
     width: 10%;
@@ -844,6 +855,11 @@ $dashOffsetEnd: 0;
       width: 7%;
       // margin-top: 20px;
     }
+
+    // &.help__step {
+    //   width: 7%;
+    //   // margin-top: 20px;
+    // }
 
     p {
       width: calc(93% - 15px);
