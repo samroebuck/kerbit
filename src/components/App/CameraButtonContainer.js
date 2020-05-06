@@ -16,7 +16,8 @@ const ControlButtonContainer = props => {
           image: helpButton ,
           alt: 'help button',
           class: 'controls__helpbtn',
-          click: props.displayHelp
+          click: props.displayHelp,
+          disabled: props.disabledRes
         },
         {
           id: 2,

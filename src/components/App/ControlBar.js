@@ -25,6 +25,7 @@ const ControlBar = (props) => {
       prediction={prediction}
       sharePredication={props.sharePredication}
       showForm={props.showForm}
+      displayHelp={props.displayHelp}
     />
   ) : (
     <LoadCollapsed

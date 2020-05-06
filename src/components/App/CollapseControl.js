@@ -9,10 +9,23 @@ class CollapseControl extends React.Component {
     this.state = {
       expandedHowTo: true,
       expandedKnows: false,
+      orientation: true
     };
   }
 
   componentDidMount() {
+    if (window.innerWidth < window.innerHeight) {
+      this.setState({   
+        orientation: true
+    })
+    } else {
+      this.setState({   
+        orientation: false,
+        expandedHowTo: true,
+      expandedKnows: true
+    })
+    }
+
     let visited = localStorage['alreadyVisited'];
     if (visited) {
       this.setState({ expandedHowTo: true });
@@ -20,6 +33,30 @@ class CollapseControl extends React.Component {
       this.setState({ expandedHowTo: false });
       localStorage['alreadyVisited'] = true;
     }
+
+    this.handleOrient();
+
+  }
+
+  handleOrient = () => {
+    var self = this;          // Store `this` component outside the callback
+    if ('onorientationchange' in window) {
+        window.addEventListener("orientationchange", function() {
+
+            // `this` is now pointing to `window`, not the component. So use `self`.
+            self.setState({   
+                orientation: !self.state.orientation
+            })
+
+                if (self.state.orientation === false) {
+                  self.setState({ expandedHowTo: true, expandedKnows: true })
+                } else {
+                  self.setState({ expandedHowTo: false, expandedKnows: false})
+                }
+
+        }, false);
+    }
+    
   }
 
   handleAccordian = (e) => {
@@ -50,16 +87,16 @@ class CollapseControl extends React.Component {
 
     return (
       <>
-      <div className='buttoncontroller'>
-        <CameraButtonContainer
-
-          disabled={disabledOnForm}
-          cameraClick={captureImage}
-          displayHelp={displayHelp}
-          help={help}
-        ></CameraButtonContainer>
+        <div className='buttoncontroller'>
+          <CameraButtonContainer
+            disabled={disabledOnForm}
+            cameraClick={captureImage}
+            displayHelp={displayHelp}
+            help={help}
+          ></CameraButtonContainer>
         </div>
-          { help ? <>
+        {help ? (
+          <>
             <Help
               expandedHowTo={this.state.expandedHowTo}
               handleAccordian={this.handleAccordian}
@@ -68,8 +105,11 @@ class CollapseControl extends React.Component {
               expandedKnows={this.state.expandedKnows}
               handleAccordian={this.handleAccordian}
             />
-          </> : ''}
           </>
+        ) : (
+          ''
+        )}
+      </>
     );
   }
 }

@@ -35,7 +35,8 @@ class Main extends React.Component {
       prediction: '',
       wrong: false,
       help: false,
-      cameraAccess: ''
+      cameraAccess: '',
+      // orientation: true
     };
   }
 
@@ -49,6 +50,9 @@ class Main extends React.Component {
 
       localStorage['alreadyVisited'] = true;
     }
+
+
+    // this.handleChange()
   }
 
   initializeCamera = () => {
@@ -158,6 +162,8 @@ class Main extends React.Component {
     });
   };
 
+
+
   render() {
     const { captured, prediction, cameraAccess } = this.state;
     return (
@@ -179,6 +185,7 @@ class Main extends React.Component {
           disableOnForm={this.state.wrong}
           displayHelp={this.displayHelp}
           help={this.state.help}
+          // orientation={this.state.orientation}
         ></ControlBar>
       </>
     );

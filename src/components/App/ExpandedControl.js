@@ -8,7 +8,7 @@ import RecycleLocation from './RecycleLocation';
 import Recyclable from './Recyclable';
 
 const ExpandedControl = (props) => {
-  const { discardImage, sharePredication } = props;
+  const { discardImage, sharePredication, displayHelp } = props;
 
   let displayMap;
   if (
@@ -17,6 +17,8 @@ const ExpandedControl = (props) => {
     props.prediction === "IT'S GLASS" ||
     props.prediction === "IT'S KITCHENWARES" ||
     props.prediction === "IT'S COFFEE-CUPS" ||
+    props.prediction === "IT'S TEXTILES" ||
+
     props.prediction === "KERBIT'S NOT SURE!"
   ) {
     displayMap = <MapContainer />;
@@ -25,7 +27,7 @@ const ExpandedControl = (props) => {
   return (
     <>
       <div className='buttoncontroller'>
-        <CameraButtonContainer disabled={true}></CameraButtonContainer>
+        <CameraButtonContainer displayHelp={displayHelp} disabled={true} disabledRes={true}></CameraButtonContainer>
       </div>
       <div
         className={`response ${

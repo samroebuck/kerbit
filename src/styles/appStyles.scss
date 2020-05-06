@@ -683,7 +683,7 @@ $dashOffsetEnd: 0;
       // flex-direction: column-reverse;
       height: 100%;
       width: 60px;
-      padding: 0px 20px 0px 0px;
+      padding: 0px 0px 0px 0px;
 
       .controls__helpbtn {
         align-self: end;
@@ -706,11 +706,12 @@ $dashOffsetEnd: 0;
       flex-wrap: nowrap;
       bottom: 10px;
       transition: unset;
+      max-width: 90vw;
 
-      &.controls--expandedls {
-        flex-wrap: wrap;
-        flex-direction: column;
-      }
+      // &.controls--expandedls {
+      //   flex-wrap: wrap;
+      //   flex-direction: column;
+      // }
 
       .controls__capturebtn {
         align-self: unset;
@@ -724,7 +725,7 @@ $dashOffsetEnd: 0;
         // flex-direction: column-reverse;
         height: 100%;
         width: 60px;
-        padding: 0px 0px 0px 0px;
+        padding: 10px 0px 10px 0px;
 
         .controls__helpbtn {
           align-self: end;
@@ -754,7 +755,7 @@ $dashOffsetEnd: 0;
 
   .response {
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 50px repeat(2, 1fr) 55px 55px;
+    grid-template-rows: 70px repeat(2, 1fr) 55px 55px;
     height: calc(100vh - 60px);
     margin: 0px 0px 0px 10px;
     width: auto;
@@ -768,6 +769,9 @@ $dashOffsetEnd: 0;
 
     &__prediction {
       grid-area: 1 / 1 / 2 / 5;
+      h2 {
+        font-size: 1.5em;
+      }
     }
 
     &__recyclable {
@@ -832,7 +836,7 @@ $dashOffsetEnd: 0;
         text-align: center;
 
         p {
-          font-size: 16px;
+          font-size: 24px;
         }
       }
 
@@ -840,6 +844,11 @@ $dashOffsetEnd: 0;
         grid-area: 5 / 1 / 5 / 2;
       }
     }
+  }
+
+  .help {
+    margin-right: 5px;
+    margin-left: 15px;
   }
 
   .help,
@@ -853,18 +862,15 @@ $dashOffsetEnd: 0;
 
     &__btn {
       width: 12%;
+      display: none;
     }
 
-    // img {
-    //   width: 7%;
-    //   // margin-top: 20px;
-    // }
+    &__title {
+      width: 100%;
+    }
 
     .help__step {
       width: 7%;
-      // margin-top: 5px;
-
-      // margin-top: 20px;
     }
 
     p {
@@ -873,12 +879,12 @@ $dashOffsetEnd: 0;
     }
 
     &--expandedtrue {
-      height: calc(100% - 110px);
+      height: calc(90%);
       overflow: auto;
 
       .help__step {
         width: 7%;
-        margin-top: 5px;
+        // margin-top: 5px;
 
         // margin-top: 20px;
       }
@@ -889,7 +895,7 @@ $dashOffsetEnd: 0;
       }
 
       img {
-        width: 7%;
+        width: 10%;
         margin-top: 2.5vh;
         margin-left: unset;
       }
