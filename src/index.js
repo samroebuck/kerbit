@@ -13,7 +13,9 @@ import './fonts/RobotoSlab-Light.ttf';
 // code splitting
 import Loadable from 'react-loadable';
 
-const Loading = () => <h1>Loading...</h1>;
+const Loading = () => <h1 className='load' style={{color: "#eb9089", position: "absolute", top: "40%",height: "20vh",
+width: "90%", display: "flex", alignItems: "center",
+justifyContent: "center"}}>Loading...</h1>;
 
 const LoadApp = Loadable({
   loader: () => import('./App'),
