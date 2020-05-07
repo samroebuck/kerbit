@@ -26,6 +26,7 @@ const ControlButtonContainer = props => {
           class: 'controls__capturebtn',
           click: props.cameraClick,
           disabled: props.disabled
+
         },
         {
           id: 3,

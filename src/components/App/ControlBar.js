@@ -16,7 +16,7 @@ const LoadCollapsed = Loadable({
 // code splitting
 
 const ControlBar = (props) => {
-  const { prediction, disableOnForm, help } = props;
+  const { prediction, disabled, help } = props;
 
   const control = prediction ? (
     <LoadExpanded
@@ -24,16 +24,14 @@ const ControlBar = (props) => {
       discardImage={props.discardImage}
       prediction={prediction}
       sharePredication={props.sharePredication}
-      showForm={props.showForm}
-      displayHelp={props.displayHelp}
+      disabled={disabled}
     />
   ) : (
     <LoadCollapsed
       captureImage={props.captureImage}
-      disabledOnForm={disableOnForm}
       displayHelp={props.displayHelp}
       help={help}
-      showForm={props.showForm}
+      disabled={disabled}
     />
   );
 

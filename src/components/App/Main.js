@@ -33,10 +33,9 @@ class Main extends React.Component {
       capturedImage: null,
       captured: false,
       prediction: '',
-      wrong: false,
+      disabled: false,
       help: false,
       cameraAccess: '',
-      // orientation: true
     };
   }
 
@@ -49,10 +48,9 @@ class Main extends React.Component {
       this.setState({ help: true });
 
       localStorage['alreadyVisited'] = true;
+      // localStorage.clear()
     }
 
-
-    // this.handleChange()
   }
 
   initializeCamera = () => {
@@ -66,8 +64,8 @@ class Main extends React.Component {
 
     this.webcam.setup().catch(() => {
       this.setState({
-        cameraAccess: 'Unable to access your camera! Please approve access to use Kerbit!',
-        wrong: true,
+        cameraAccess: 'Unable to access your camera! Please approve camera access to use Kerbit!',
+        disabled: true,
     });
   });
 }
@@ -127,6 +125,7 @@ class Main extends React.Component {
     this.setState({
       captured: true,
       capturedImage: capturedData.base64,
+      disabled: true,
     });
     this.runModel();
   };
@@ -137,6 +136,7 @@ class Main extends React.Component {
       capturedImage: null,
       prediction: '',
       help: false,
+      disabled: false,
     });
   };
 
@@ -158,8 +158,13 @@ class Main extends React.Component {
   displayHelp = () => {
     this.setState({
       help: !this.state.help,
-      wrong: !this.state.wrong,
+      disabled: !this.state.disabled,
     });
+    if (this.state.cameraAccess !== '') {
+      this.setState({
+        disabled: true,
+      });
+    }
   };
 
 
@@ -175,17 +180,16 @@ class Main extends React.Component {
           captured={this.state.captured}
         />
         {captured && !prediction ? <LoadSpinner /> : <></>}
-        <p className='cameraerror'>{cameraAccess}</p>
+        
+        {cameraAccess ? <p className='cameraerror'>{cameraAccess}</p> : <></>}
         <ControlBar
           captureImage={this.captureImage}
           prediction={this.state.prediction}
           discardImage={this.discardImage}
           sharePredication={this.sharePredication}
-          showForm={this.showForm}
-          disableOnForm={this.state.wrong}
+          disabled={this.state.disabled}
           displayHelp={this.displayHelp}
           help={this.state.help}
-          // orientation={this.state.orientation}
         ></ControlBar>
       </>
     );

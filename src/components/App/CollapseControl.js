@@ -9,21 +9,23 @@ class CollapseControl extends React.Component {
     this.state = {
       expandedHowTo: true,
       expandedKnows: false,
-      orientation: true
+      orientation: true,
     };
   }
 
   componentDidMount() {
     if (window.innerWidth < window.innerHeight) {
-      this.setState({   
-        orientation: true
-    })
+      this.setState({
+        expandedHowTo: true,
+        expandedKnows: false,
+        orientation: true,
+      });
     } else {
-      this.setState({   
+      this.setState({
         orientation: false,
         expandedHowTo: true,
-      expandedKnows: true
-    })
+        expandedKnows: true,
+      });
     }
 
     let visited = localStorage['alreadyVisited'];
@@ -35,29 +37,27 @@ class CollapseControl extends React.Component {
     }
 
     this.handleOrient();
-
   }
 
   handleOrient = () => {
-    var self = this;          // Store `this` component outside the callback
+    var self = this;
     if ('onorientationchange' in window) {
-        window.addEventListener("orientationchange", function() {
-
-            // `this` is now pointing to `window`, not the component. So use `self`.
-            self.setState({   
-                orientation: !self.state.orientation
-            })
-
-                if (self.state.orientation === false) {
-                  self.setState({ expandedHowTo: true, expandedKnows: true })
-                } else {
-                  self.setState({ expandedHowTo: false, expandedKnows: false})
-                }
-
-        }, false);
+      window.addEventListener(
+        'orientationchange',
+        function () {
+          self.setState({
+            orientation: !self.state.orientation,
+          });
+          if (self.state.orientation === false) {
+            self.setState({ expandedHowTo: true, expandedKnows: true });
+          } else {
+            self.setState({ expandedHowTo: false, expandedKnows: false });
+          }
+        },
+        false
+      );
     }
-    
-  }
+  };
 
   handleAccordian = (e) => {
     let element =
@@ -83,13 +83,13 @@ class CollapseControl extends React.Component {
   };
 
   render() {
-    const { captureImage, disabledOnForm, displayHelp, help } = this.props;
+    const { captureImage, disabled, displayHelp, help } = this.props;
 
     return (
       <>
         <div className='buttoncontroller'>
           <CameraButtonContainer
-            disabled={disabledOnForm}
+            disabled={disabled}
             cameraClick={captureImage}
             displayHelp={displayHelp}
             help={help}
