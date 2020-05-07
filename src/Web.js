@@ -7,7 +7,7 @@ import SocialIconContainer from './components/Web/SocialIconContainer'
 import PWAPrompt from 'react-ios-pwa-prompt'
 //images
 import logo from './images/logo-refined-spacing.svg';
-import app from './images/mockup-forweb.svg';
+import app from './images/mockup.png';
 
 class Web extends React.Component {
   componentDidMount() {
