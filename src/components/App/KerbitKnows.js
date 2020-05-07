@@ -1,17 +1,11 @@
 import React from 'react';
-// import InfoBoxContainer from '../Web/InfoBoxContainer';
 import { Link } from 'react-router-dom';
-//images
 
 import Arrow from '../../images/arrow.svg'
-
 import Paper from '../../images/paper.svg'
 import Chair from '../../images/chair.svg'
 import Home from '../../images/home.svg'
 import Question from '../../images/messagefill.svg'
-
-
-
 
 const KerbitKnows = props => {
 

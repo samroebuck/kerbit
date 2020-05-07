@@ -1,7 +1,19 @@
 import React from 'react';
+import Loadable from 'react-loadable';
 import CameraButtonContainer from './CameraButtonContainer';
-import Help from './Help';
-import KerbitKnows from './KerbitKnows';
+
+// code splitting
+const Loading = () => <h1>Loading...</h1>; 
+
+const LoadHelp = Loadable({
+  loader: () => import('./Help'),
+  loading: Loading,
+});
+
+const LoadKnows = Loadable({
+  loader: () => import('./KerbitKnows'),
+  loading: Loading,
+});
 
 class CollapseControl extends React.Component {
   constructor(props) {
@@ -97,11 +109,11 @@ class CollapseControl extends React.Component {
         </div>
         {help ? (
           <>
-            <Help
+            <LoadHelp
               expandedHowTo={this.state.expandedHowTo}
               handleAccordian={this.handleAccordian}
             />
-            <KerbitKnows
+            <LoadKnows
               expandedKnows={this.state.expandedKnows}
               handleAccordian={this.handleAccordian}
             />
