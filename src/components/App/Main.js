@@ -80,8 +80,6 @@ class Main extends React.Component {
       a.prob > b.prob ? -1 : b.prob > a.prob ? 1 : 0
     );
     let mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
-    console.log(predictions)   
-    console.log(mostLikely + ' before switch')     
 
     switch (mostLikely) {
       case "IT'S CHAIR":
@@ -105,9 +103,8 @@ class Main extends React.Component {
       default:
         mostLikely = `IT'S ${predictions[0].label.toUpperCase()}`;
     }
-    console.log(mostLikely + ' after switch')     
 
-    if (predictions[0].prob < 0.4) {
+    if (predictions[0].prob < 0.3) {
       mostLikely = "KERBIT'S NOT SURE!";
     }
 
