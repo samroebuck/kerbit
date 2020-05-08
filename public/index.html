@@ -20,8 +20,8 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <link
       rel="apple-touch-icon"
-      sizes="152x152"
-      href="%PUBLIC_URL%/icon-152.png"
+      sizes="180x180"
+      href="%PUBLIC_URL%/icon-180.png"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   </head>
@@ -46,15 +46,11 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
-      /* Sample function that returns boolean in case the browser is Internet Explorer*/
       function isIE() {
         ua = navigator.userAgent;
-        /* MSIE used to detect old browsers and Trident used to newer ones*/
         var is_ie = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
-
         return is_ie;
       }
-      /* Create an alert to show if the browser is IE or not */
       if (isIE()) {
         document.querySelector('#root').innerHTML =
           '<h1 style="color:#68bab4;text-align:center;">Kerbit doesn\'t work in outdated browsers, please upgrade to a modern browser!</h1>';
