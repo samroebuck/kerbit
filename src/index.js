@@ -49,14 +49,6 @@ class Index extends React.Component {
     };
   }
 
-  // isIE = () => {
-  //   let ua = navigator.userAgent;
-  //   /* MSIE used to detect old browsers and Trident used to newer ones*/
-  //   var is_ie = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
-
-  //   return is_ie;
-  // };
-
   componentDidMount() {
     if (navigator.standalone) {
       this.setState({
@@ -76,10 +68,13 @@ class Index extends React.Component {
     }
   }
 
-  /* Create an alert to show if the browser is IE or not */
 
   render() {
-    return <>{this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}</>;
+    return <>
+    {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}
+    {/* <LoadApp /> */}
+    </>;
+    
   }
 }
 

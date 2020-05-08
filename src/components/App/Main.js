@@ -43,12 +43,11 @@ class Main extends React.Component {
     document.querySelector('#root').classList.add('appMain');
     let visited = localStorage['alreadyVisited'];
     if (visited) {
-      this.setState({ help: false });
+      this.setState({ help: false, disabled: false });
     } else {
-      this.setState({ help: true });
+      this.setState({ help: true, disabled: true });
 
       localStorage['alreadyVisited'] = true;
-      // localStorage.clear()
     }
 
   }
