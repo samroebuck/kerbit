@@ -13,9 +13,23 @@ import './fonts/RobotoSlab-Light.ttf';
 // code splitting
 import Loadable from 'react-loadable';
 
-const Loading = () => <h1 className='load' style={{color: "#eb9089", position: "absolute", top: "40%",height: "20vh",
-width: "90%", display: "flex", alignItems: "center",
-justifyContent: "center"}}>Loading...</h1>;
+const Loading = () => (
+  <h1
+    className='load'
+    style={{
+      color: '#eb9089',
+      position: 'absolute',
+      top: '40%',
+      height: '20vh',
+      width: '90%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    Loading...
+  </h1>
+);
 
 const LoadApp = Loadable({
   loader: () => import('./App'),
@@ -34,6 +48,14 @@ class Index extends React.Component {
       downloaded: false,
     };
   }
+
+  // isIE = () => {
+  //   let ua = navigator.userAgent;
+  //   /* MSIE used to detect old browsers and Trident used to newer ones*/
+  //   var is_ie = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
+
+  //   return is_ie;
+  // };
 
   componentDidMount() {
     if (navigator.standalone) {
@@ -54,12 +76,10 @@ class Index extends React.Component {
     }
   }
 
+  /* Create an alert to show if the browser is IE or not */
+
   render() {
-    return (
-      <>
-        {this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}
-      </>
-    );
+    return <>{this.state.downloaded === true ? <LoadApp /> : <LoadWeb />}</>;
   }
 }
 
