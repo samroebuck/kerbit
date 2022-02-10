@@ -7,7 +7,7 @@
     "@tensorflow/tfjs-converter": "^1.7.0",
     "@tensorflow/tfjs-core": "^1.5.1",
     "google-map-react": "^1.1.6",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-ios-pwa-prompt": "^1.6.0",
